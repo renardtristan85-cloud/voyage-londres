@@ -130,7 +130,6 @@ function normalizeData(raw) {
 
 // ---------- Petits composants ----------
 
-function Barcode({ height = 22 }) {
   const voyageTimeline = [
     { date: "13 MAR", title: "PARIS → LONDON", detail: "Départ · Arrivée à Londres" },
     { date: "14 MAR", title: "LONDON", detail: "Première journée · Découverte" },
@@ -139,6 +138,7 @@ function Barcode({ height = 22 }) {
     { date: "17 MAR", title: "LONDON → PARIS", detail: "Retour · Fin du voyage" },
   ];
 
+function Barcode({ height = 22 }) {
   return (
     <div
       style={{
