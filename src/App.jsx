@@ -5,15 +5,15 @@ import { supabase } from "./lib/supabase";
 
 // ---------- Couleurs ----------
 const C = {
-  ink: "#0B0F14",
-  inkPanel: "#12181F",
-  bone: "#F5F1E6",
-  boneAlt: "#EAE3D3",
-  signal: "#C8102E",
-  brass: "#A9895A",
-  graphite: "#586170",
-  line: "rgba(20,24,30,0.16)",
-  lineOnInk: "rgba(245,241,230,0.18)",
+  ink: "#101419",
+  inkPanel: "#171C21",
+  bone: "#F3F1EA",
+  boneAlt: "#E8E6DF",
+  signal: "#A71930",
+  brass: "#A89468",
+  graphite: "#4E555D",
+  line: "rgba(16,20,25,0.14)",
+  lineOnInk: "rgba(243,241,234,0.18)",
 };
 const serif = { fontFamily: "'Fraunces', Georgia, serif" };
 const mono = { fontFamily: "'IBM Plex Mono', monospace" };
@@ -91,10 +91,10 @@ const ACTIVITIES_SECURITY = [
 ];
 
 const TABS = [
-  { key: "hebergement", label: "Hébergement" },
-  { key: "repas", label: "Repas" },
-  { key: "activites", label: "Activités" },
-  { key: "dossier", label: "Dossier" },
+  { key: "hebergement", label: "Hébergement", chapter: "01", subtitle: "STAY IN LONDON" },
+  { key: "repas", label: "Repas", chapter: "02", subtitle: "TASTE OF LONDON" },
+  { key: "activites", label: "Activités", chapter: "03", subtitle: "DISCOVER LONDON" },
+  { key: "dossier", label: "Dossier", chapter: "04", subtitle: "TRAVEL FILE" },
 ];
 
 const VOTE_CATEGORIES = ["hebergement", "repas", "activites"];
@@ -131,6 +131,14 @@ function normalizeData(raw) {
 // ---------- Petits composants ----------
 
 function Barcode({ height = 22 }) {
+  const voyageTimeline = [
+    { date: "13 MAR", title: "PARIS → LONDON", detail: "Départ · Arrivée à Londres" },
+    { date: "14 MAR", title: "LONDON", detail: "Première journée · Découverte" },
+    { date: "15 MAR", title: "LONDON", detail: "Culture · Activités · Centre-ville" },
+    { date: "16 MAR", title: "LONDON", detail: "Dernière journée · Programme libre" },
+    { date: "17 MAR", title: "LONDON → PARIS", detail: "Retour · Fin du voyage" },
+  ];
+
   return (
     <div
       style={{
@@ -185,20 +193,35 @@ function Ticket({ item, category, itemVotes, voterName, onVote, isAdmin, onDelet
   const canDelete = item.author && onDelete && (isAdmin || (voterName && voterName === item.author));
 
   return (
-    <div className="ticket-card" style={{ background: C.bone, border: `1px solid ${C.line}`, boxShadow: `6px 6px 0 rgba(11,15,20,0.14)` }}>
+    <div className={`ticket-card ticket-category-${category}`} style={{ background: C.bone, border: `1px solid ${C.line}`, boxShadow: `6px 6px 0 rgba(11,15,20,0.14)` }}>
+      <div className="ticket-watermark" aria-hidden="true" />
       <div className="flex-1 p-6 flex flex-col gap-3">
-        <div className="flex items-start justify-between gap-3">
-          <div>
-            <h3 style={{ ...serif, fontWeight: 600, fontSize: 21, color: C.ink }}>{item.name}</h3>
-            <div className="flex items-center gap-1.5 mt-1.5" style={{ color: C.graphite, fontSize: 12, ...mono }}>
-              <MapPin size={12} /> {item.where}
-            </div>
+        <div className="ticket-header-premium">
+          <div className="ticket-header-top">
+            <span>VOYAGE LONDRES · PASSENGER DOSSIER</span>
+            <span>EUROSTAR 9020</span>
           </div>
-          {item.author && (
-            <span className="shrink-0 px-2 py-1" style={{ border: `1px solid ${C.brass}`, color: C.brass, fontSize: 10.5, letterSpacing: 1, ...mono }}>
-              PROPOSITION
-            </span>
-          )}
+
+          <div className="ticket-header-rule" />
+
+          <div className="flex items-start justify-between gap-3">
+            <div>
+              <h3 style={{ ...serif, fontWeight: 600, fontSize: 21, color: C.ink }}>{item.name}</h3>
+              <div className="flex items-center gap-1.5 mt-1.5" style={{ color: C.graphite, fontSize: 12, ...mono }}>
+                <MapPin size={12} /> {item.where}
+              </div>
+            </div>
+            {item.author && (
+              <span className="shrink-0 px-2 py-1" style={{ border: `1px solid ${C.brass}`, color: C.brass, fontSize: 10.5, letterSpacing: 1, ...mono }}>
+                PROPOSITION
+              </span>
+            )}
+          </div>
+
+          <div className="ticket-header-bottom">
+            <span>13 MAR — 17 MAR 2028</span>
+            <span>PARIS → LONDON</span>
+          </div>
         </div>
         <p style={{ color: C.ink, fontSize: 14.5, lineHeight: 1.55, opacity: 0.85, maxWidth: "60ch" }}>
           {long && !open ? item.desc.slice(0, 128) + "…" : item.desc}
@@ -208,6 +231,29 @@ function Ticket({ item, category, itemVotes, voterName, onVote, isAdmin, onDelet
             {open ? <>Réduire le descriptif <ChevronUp size={13} /></> : <>Lire le descriptif <ChevronDown size={13} /></>}
           </button>
         )}
+        <div className="ticket-route-premium">
+          <div className="ticket-route-head">
+            <span>PARIS</span>
+            <span className="ticket-route-date">13—17 MAR 2028</span>
+            <span>LONDON</span>
+          </div>
+
+          <div className="ticket-route-line">
+            <span className="ticket-route-dot ticket-route-dot-start" />
+            <span className="ticket-route-track" />
+            <span className="ticket-route-dot ticket-route-dot-end" />
+          </div>
+
+          <div className="ticket-route-codes">
+            <span>CDG</span>
+            <span>STP</span>
+          </div>
+
+          <div className="ticket-microprint">
+            PARIS × LONDON · EUROSTAR 9020 · PASSENGER DOSSIER · 2028
+          </div>
+        </div>
+
         {item.meta && (
           <div className="flex flex-col gap-1 py-1">
             {item.meta.map((m, i) => (
@@ -2108,21 +2154,42 @@ export default function App() {
         />
       )}
 
-      <header className="px-6 md:px-14 pt-12 pb-10">
-        <div className="flex items-start justify-between gap-4">
-          <div style={{ ...mono, color: C.brass, fontSize: 11.5, letterSpacing: 2 }}>FILIÈRE SÉCURITÉ · PRÉPARATION COLLECTIVE</div>
-          <button onClick={() => setShowAdminGate(true)} className="flex items-center gap-1.5 shrink-0" style={{ color: C.graphite, fontSize: 11, ...mono, cursor: "pointer" }}>
+      <header className="voyage-cover px-6 md:px-14 pt-12 pb-10">
+        <div className="voyage-cover-top">
+          <div className="voyage-kicker">
+            <span className="voyage-kicker-number">VL / 2028 / 01</span>
+            <span>FILIÈRE SÉCURITÉ · PRÉPARATION COLLECTIVE</span>
+          </div>
+
+          <button onClick={() => setShowAdminGate(true)} className="voyage-admin-button flex items-center gap-1.5 shrink-0">
             <Lock size={11} /> Organisateur
           </button>
         </div>
-        <div className="flex items-end justify-between flex-wrap gap-6 mt-3">
-          <h1 style={{ ...serif, color: C.bone, fontSize: "clamp(38px,6vw,64px)", fontWeight: 600, lineHeight: 1.02 }}>Paris — Londres</h1>
-          <div className="hidden md:block"><RoutePath /></div>
+
+        <div className="voyage-cover-main">
+          <div className="voyage-cover-title">
+            <div className="voyage-cover-eyebrow">PASSENGER TRAVEL DOSSIER</div>
+            <h1>Paris <span>—</span> Londres</h1>
+            <div className="voyage-cover-subtitle">PARIS → LONDON · 13—17 MARS 2028</div>
+          </div>
+
+          <div className="voyage-seal">
+            <span>VL</span>
+            <small>2028</small>
+          </div>
+
+          <div className="hidden md:block voyage-cover-route">
+            <RoutePath />
+          </div>
         </div>
-        <div className="flex items-center gap-4 flex-wrap mt-4" style={{ ...mono, color: C.bone, fontSize: 12.5, opacity: 0.85 }}>
-          <span>EUROSTAR 9020</span><span style={{ color: C.lineOnInk }}>·</span>
-          <span>13 → 17 MARS 2028</span><span style={{ color: C.lineOnInk }}>·</span>
-          <span>4 NUITS</span><span style={{ color: C.lineOnInk }}>·</span>
+
+        <div className="voyage-cover-info">
+          <span>EUROSTAR 9020</span>
+          <i />
+          <span>13 → 17 MARS 2028</span>
+          <i />
+          <span>4 NUITS</span>
+          <i />
           <span>15 PAX MAX</span>
         </div>
         {voterName && (
@@ -2132,12 +2199,41 @@ export default function App() {
         )}
       </header>
 
-      <nav className="px-6 md:px-14 flex gap-14" style={{ borderBottom: `1px solid ${C.lineOnInk}` }}>
+      <section className="voyage-timeline px-6 md:px-14" aria-label="Chronologie du voyage">
+        <div className="voyage-timeline-heading">
+          <span>ITINÉRAIRE</span>
+          <span>13—17 MARS 2028</span>
+        </div>
+
+        <div className="voyage-timeline-track">
+          {voyageTimeline.map((day, index) => (
+            <div className={`voyage-timeline-day ${index === 0 || index === voyageTimeline.length - 1 ? "terminal" : ""}`} key={day.date}>
+              <div className="voyage-timeline-marker">
+                <span />
+              </div>
+              <div className="voyage-timeline-date">{day.date}</div>
+              <div className="voyage-timeline-title">{day.title}</div>
+              <div className="voyage-timeline-detail">{day.detail}</div>
+            </div>
+          ))}
+        </div>
+      </section>
+
+      <nav className="voyage-tabs px-6 md:px-14" style={{ borderBottom: `1px solid ${C.lineOnInk}` }}>
         {TABS.map((t) => (
-          <button key={t.key} onClick={() => setTab(t.key)} className="pb-4 relative flex items-center gap-1.5" style={{ ...serif, fontSize: 17, fontWeight: 600, color: tab === t.key ? C.bone : C.graphite }}>
-            {t.key === "dossier" && <FileText size={15} />}
-            {t.label}
-            {tab === t.key && <span className="absolute left-0 right-0" style={{ bottom: -1, height: 2, background: C.signal }} />}
+          <button
+            key={t.key}
+            onClick={() => setTab(t.key)}
+            className={`voyage-tab ${tab === t.key ? "active" : ""}`}
+          >
+            <span className="voyage-tab-number">{t.chapter}</span>
+            <span className="voyage-tab-content">
+              <span className="voyage-tab-label">
+                {t.key === "dossier" && <FileText size={14} />}
+                {t.label}
+              </span>
+              <span className="voyage-tab-subtitle">{t.subtitle}</span>
+            </span>
           </button>
         ))}
       </nav>
