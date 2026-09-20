@@ -130,14 +130,6 @@ function normalizeData(raw) {
 
 // ---------- Petits composants ----------
 
-  const voyageTimeline = [
-    { date: "13 MAR", title: "PARIS → LONDON", detail: "Départ · Arrivée à Londres" },
-    { date: "14 MAR", title: "LONDON", detail: "Première journée · Découverte" },
-    { date: "15 MAR", title: "LONDON", detail: "Culture · Activités · Centre-ville" },
-    { date: "16 MAR", title: "LONDON", detail: "Dernière journée · Programme libre" },
-    { date: "17 MAR", title: "LONDON → PARIS", detail: "Retour · Fin du voyage" },
-  ];
-
 function Barcode({ height = 22 }) {
   return (
     <div
@@ -154,60 +146,13 @@ function Barcode({ height = 22 }) {
 function RoutePath() {
   return (
     <svg width="230" height="64" viewBox="0 0 230 64" fill="none">
-      <line
-        x1="14"
-        y1="32"
-        x2="216"
-        y2="32"
-        stroke={C.lineOnInk}
-        strokeWidth="1"
-        strokeDasharray="2 6"
-        strokeLinecap="round"
-      />
-
-      <circle cx="14" cy="32" r="6" fill={C.ink} />
-      <circle cx="14" cy="32" r="3" fill={C.bone} />
-
-      <circle cx="216" cy="32" r="6" fill={C.signal} />
-      <circle cx="216" cy="32" r="3" fill={C.bone} />
-
-      <text
-        x="0"
-        y="16"
-        fill={C.bone}
-        style={{ ...mono, fontSize: 10, letterSpacing: 1.6 }}
-      >
-        PARIS
-      </text>
-
-      <text
-        x="230"
-        y="16"
-        textAnchor="end"
-        fill={C.signal}
-        style={{ ...mono, fontSize: 10, letterSpacing: 1.6 }}
-      >
-        LONDRES
-      </text>
-
-      <text
-        x="0"
-        y="52"
-        fill={C.graphite}
-        style={{ ...mono, fontSize: 8.5, letterSpacing: 0.4 }}
-      >
-        GARE DU NORD · GDN
-      </text>
-
-      <text
-        x="230"
-        y="52"
-        textAnchor="end"
-        fill={C.graphite}
-        style={{ ...mono, fontSize: 8.5, letterSpacing: 0.4 }}
-      >
-        ST PANCRAS · STP
-      </text>
+      <line x1="14" y1="32" x2="216" y2="32" stroke={C.lineOnInk} strokeWidth="1.5" strokeDasharray="1 7" strokeLinecap="round" />
+      <circle cx="14" cy="32" r="5" fill={C.bone} />
+      <circle cx="216" cy="32" r="5" fill={C.signal} />
+      <text x="0" y="16" fill={C.bone} style={{ ...mono, fontSize: 11, letterSpacing: 1 }}>PARIS</text>
+      <text x="178" y="16" fill={C.signal} style={{ ...mono, fontSize: 11, letterSpacing: 1 }}>LONDRES</text>
+      <text x="0" y="52" fill={C.graphite} style={{ ...mono, fontSize: 10 }}>CDG</text>
+      <text x="196" y="52" fill={C.graphite} style={{ ...mono, fontSize: 10 }}>STP</text>
     </svg>
   );
 }
@@ -229,517 +174,110 @@ function VoteStamp({ label, active, disabled, onClick, kind }) {
   );
 }
 
-
-function TicketWatermark({ variant = 0 }) {
-  const motifs = [
-    <g key="01">
-      <g opacity=".34">
-        <circle cx="500" cy="165" r="116"/>
-        <circle cx="500" cy="165" r="108"/>
-        <circle cx="500" cy="165" r="99"/>
-        <circle cx="500" cy="165" r="91"/>
-      </g>
-      <path d="M92 245 C210 210 275 120 385 156 S620 220 908 82"/>
-      <path d="M92 255 C210 220 275 130 385 166 S620 230 908 92"/>
-      <path className="wm-building" d="M115 238V158h22v-34h25v34h28v80M149 124V98h10v26M137 238v-44h31v44"/>
-      <path className="wm-building" d="M818 238V135h20v-28h24v28h30v103M850 107V80h11v27M836 238v-52h42v52"/>
-      <path d="M385 156l-12-9m12 9-6 14M620 220l12-8m-12 8 2-15"/>
-      <circle cx="500" cy="165" r="42"/>
-      <circle cx="500" cy="165" r="34"/>
-      <path d="M500 131v68M466 165h68M476 141l48 48M524 141l-48 48"/>
-      <text x="500" y="161" textAnchor="middle" className="wm-letter">PARIS · LONDON</text>
-      <text x="500" y="180" textAnchor="middle" className="wm-letter">48°51′N · 51°30′N</text>
-    </g>,
-
-    <g key="02">
-      <g opacity=".32">
-        <circle cx="500" cy="165" r="126"/>
-        <circle cx="500" cy="165" r="116"/>
-        <circle cx="500" cy="165" r="106"/>
-        <circle cx="500" cy="165" r="96"/>
-      </g>
-      <g>
-        <ellipse cx="500" cy="165" rx="210" ry="54"/>
-        <ellipse cx="500" cy="165" rx="210" ry="43"/>
-        <ellipse cx="500" cy="165" rx="210" ry="32"/>
-        <ellipse cx="500" cy="165" rx="54" ry="145"/>
-        <ellipse cx="500" cy="165" rx="43" ry="145"/>
-        <ellipse cx="500" cy="165" rx="32" ry="145"/>
-      </g>
-      <path d="M270 165h460M500 35v260"/>
-      <path d="M338 83l324 164M662 83L338 247"/>
-      <circle cx="500" cy="165" r="18"/>
-      <circle cx="500" cy="165" r="7"/>
-    </g>,
-
-    <g key="03">
-      <path d="M95 92 C210 38 290 148 405 94 S600 40 905 112"/>
-      <path d="M95 106 C210 52 290 162 405 108 S600 54 905 126"/>
-      <path d="M95 120 C210 66 290 176 405 122 S600 68 905 140"/>
-      <path d="M95 134 C210 80 290 190 405 136 S600 82 905 154"/>
-      <path d="M95 148 C210 94 290 204 405 150 S600 96 905 168"/>
-      <path d="M95 162 C210 108 290 218 405 164 S600 110 905 182"/>
-      <path d="M95 176 C210 122 290 232 405 178 S600 124 905 196"/>
-      <path d="M95 190 C210 136 290 246 405 192 S600 138 905 210"/>
-      <path d="M95 204 C210 150 290 260 405 206 S600 152 905 224"/>
-      <path d="M95 218 C210 164 290 274 405 220 S600 166 905 238"/>
-      <circle cx="500" cy="165" r="48"/>
-      <circle cx="500" cy="165" r="37"/>
-      <path d="M470 165q30-30 60 0q-30 30-60 0M500 135v60"/>
-    </g>,
-
-    <g key="04">
-      <circle cx="500" cy="165" r="120"/>
-      <circle cx="500" cy="165" r="111"/>
-      <circle cx="500" cy="165" r="101"/>
-      <path d="M500 38v254M373 165h254"/>
-      <path d="M410 75l180 180M590 75L410 255"/>
-      <path d="M500 58l12 91 91-12-78 32 78 32-91-12-12 91-12-91-91 12 78-32-78-32 91 12z"/>
-      <circle cx="500" cy="165" r="16"/>
-      <circle cx="500" cy="165" r="5"/>
-      <path d="M500 38l-5 15m5-15 5 15M627 165l-15-5m15 5-15 5M500 292l-5-15m5 15 5-15M373 165l15-5m-15 5 15 5"/>
-    </g>,
-
-    <g key="05">
-      <path d="M160 78h680v174H160z"/>
-      <path d="M190 105h620M190 135h620M190 165h620M190 195h620M190 225h620"/>
-      <path d="M220 78v174M270 78v174M320 78v174M370 78v174M420 78v174M470 78v174M520 78v174M570 78v174M620 78v174M670 78v174M720 78v174M770 78v174"/>
-      <path d="M235 215 C285 175 315 190 345 150 S420 115 455 148 S525 190 565 145 S650 115 690 151 S750 190 790 135"/>
-      <circle cx="345" cy="150" r="6"/>
-      <circle cx="565" cy="145" r="6"/>
-      <circle cx="790" cy="135" r="6"/>
-      <path d="M210 92l18-10M790 238l18-10"/>
-    </g>,
-
-    <g key="06">
-      <g opacity=".3">
-        <path d="M145 72h710v186H145z"/>
-        <path d="M175 102h650M175 132h650M175 162h650M175 192h650M175 222h650"/>
-        <path d="M220 72v186M280 72v186M340 72v186M400 72v186M460 72v186M520 72v186M580 72v186M640 72v186M700 72v186M760 72v186"/>
-      </g>
-      <path d="M210 215c35-48 65-22 92-54s62-4 88-42 61 5 92-24 65 30 96 0 62 28 101-17"/>
-      <path d="M215 229c35-48 65-22 92-54s62-4 88-42 61 5 92-24 65 30 96 0 62 28 101-17"/>
-      <circle cx="302" cy="161" r="7"/>
-      <circle cx="478" cy="95" r="7"/>
-      <circle cx="673" cy="109" r="7"/>
-      <path d="M302 161l-18 19m18-19 20-17M478 95l18 18m-18-18-22-9M673 109l20 18m-20-18-5-24"/>
-    </g>,
-
-    <g key="07">
-      <path className="wm-building" d="M300 240V135h400v105"/>
-      <path className="wm-building" d="M325 135V105h350v30"/>
-      <path className="wm-building" d="M355 105V82h290v23"/>
-      <path className="wm-building" d="M390 82V62h220v20"/>
-      <path className="wm-building" d="M445 62V42h110v20"/>
-      <path d="M280 240h440"/>
-      <path d="M325 240v-70h28v70M380 240v-70h28v70M435 240v-70h28v70M490 240v-70h28v70M545 240v-70h28v70M600 240v-70h28v70M655 240v-70h20v70"/>
-      <path d="M270 252h460"/>
-      <path d="M350 252q150-32 300 0"/>
-    </g>,
-
-    <g key="08">
-      <circle cx="500" cy="165" r="126"/>
-      <circle cx="500" cy="165" r="116"/>
-      <circle cx="500" cy="165" r="89"/>
-      <circle cx="500" cy="165" r="75"/>
-      <path d="M500 76v89l55 32"/>
-      <path d="M500 52v12M500 266v12M387 165h12M601 165h12"/>
-      <path d="M420 85l9 9M580 85l-9 9M420 245l9-9M580 245l-9-9"/>
-      <circle cx="500" cy="165" r="10"/>
-      <circle cx="500" cy="165" r="4"/>
-      <text x="500" y="224" textAnchor="middle" className="wm-letter">TRAVEL • 9020</text>
-    </g>,
-
-    <g key="09">
-      <circle cx="500" cy="165" r="116"/>
-      <circle cx="500" cy="165" r="105"/>
-      <circle cx="500" cy="165" r="91"/>
-      <path d="M500 49v232M384 165h232"/>
-      <path d="M419 84l162 162M581 84L419 246"/>
-      <path d="M500 66c-26 42-26 91 0 99 26-8 26-57 0-99z"/>
-      <path d="M500 165c42-26 91-26 99 0-8 26-57 26-99 0z"/>
-      <path d="M500 264c26-42 26-91 0-99-26 8-26 57 0 99z"/>
-      <path d="M401 165c42 26 91 26 99 0-8-26-57-26-99 0z"/>
-      <circle cx="500" cy="165" r="19"/>
-      <circle cx="500" cy="165" r="7"/>
-    </g>,
-
-    <g key="10">
-      <path d="M145 82h710v166H145z"/>
-      <path d="M165 102h670v126H165z"/>
-      <path d="M165 102l670 126M165 228l670-126"/>
-      <path d="M250 102l85 126M335 102l85 126M420 102l85 126M505 102l85 126M590 102l85 126M675 102l85 126"/>
-      <path d="M250 228l85-126M335 228l85-126M420 228l85-126M505 228l85-126M590 228l85-126M675 228l85-126"/>
-      <circle cx="500" cy="165" r="48"/>
-      <circle cx="500" cy="165" r="39"/>
-      <path d="M476 165q24-24 48 0q-24 24-48 0"/>
-      <path d="M500 141v48"/>
-    </g>,
-
-
-    <g key="11">
-      <g opacity=".28">
-        <circle cx="500" cy="165" r="128"/>
-        <circle cx="500" cy="165" r="119"/>
-        <circle cx="500" cy="165" r="110"/>
-      </g>
-      <path d="M170 82h660M170 248h660"/>
-      <path d="M205 102h590M205 228h590"/>
-      <text x="500" y="128" textAnchor="middle" className="wm-main">48°51′N</text>
-      <text x="500" y="158" textAnchor="middle" className="wm-letter">PARIS · FRANCE</text>
-      <path d="M350 173h300"/>
-      <text x="500" y="204" textAnchor="middle" className="wm-main">51°30′N</text>
-      <text x="500" y="226" textAnchor="middle" className="wm-letter">LONDON · UNITED KINGDOM</text>
-      <circle cx="500" cy="165" r="9"/>
-      <path d="M500 55v22M500 253v22M390 165h22M588 165h22"/>
-    </g>,
-
-    <g key="12">
-      <path d="M210 260V135c0-73 108-108 290-108s290 35 290 108v125"/>
-      <path d="M250 260V145c0-52 94-82 250-82s250 30 250 82v115"/>
-      <path d="M290 260V155c0-34 78-57 210-57s210 23 210 57v105"/>
-      <path d="M330 260v-91c0-20 62-35 170-35s170 15 170 35v91"/>
-      <path d="M370 260v-77c0-10 46-20 130-20s130 10 130 20v77"/>
-      <path d="M180 270h640"/>
-      <path d="M250 278h500"/>
-      <path d="M320 286h360"/>
-      <circle cx="500" cy="165" r="7"/>
-    </g>,
-
-    <g key="13">
-      <path d="M145 235L315 190L430 210L570 125L700 155L855 85"/>
-      <path d="M145 247L315 202L430 222L570 137L700 167L855 97"/>
-      <path d="M145 259L315 214L430 234L570 149L700 179L855 109"/>
-      <path d="M145 271L315 226L430 246L570 161L700 191L855 121"/>
-      <path d="M145 223L315 178L430 198L570 113L700 143L855 73"/>
-      <circle cx="315" cy="190" r="8"/>
-      <circle cx="430" cy="210" r="8"/>
-      <circle cx="570" cy="125" r="8"/>
-      <circle cx="700" cy="155" r="8"/>
-      <path d="M315 175v30M430 195v30M570 110v30M700 140v30"/>
-    </g>,
-
-    <g key="14">
-      <circle cx="500" cy="165" r="125"/>
-      <circle cx="500" cy="165" r="114"/>
-      <circle cx="500" cy="165" r="103"/>
-      <circle cx="500" cy="165" r="74"/>
-      <circle cx="500" cy="165" r="62"/>
-      <path d="M500 40v250M375 165h250"/>
-      <path d="M412 77l176 176M588 77L412 253"/>
-      <path d="M500 91c-20 42-20 106 0 148c20-42 20-106 0-148z"/>
-      <path d="M426 165c42-20 106-20 148 0c-42 20-106 20-148 0z"/>
-      <path d="M452 117q48-48 96 0q-48 48-96 0z"/>
-      <path d="M452 213q48 48 96 0q-48-48-96 0z"/>
-      <circle cx="500" cy="165" r="15"/>
-    </g>,
-
-    <g key="15">
-      <path className="wm-building" d="M245 245V155h70v90M255 155v-28h50v28M280 127V92"/>
-      <path className="wm-building" d="M345 245V125h80v120M357 125V95h56v30M385 95V62"/>
-      <path className="wm-building" d="M460 245V145h80v100M472 145v-30h56v30M500 115V80"/>
-      <path className="wm-building" d="M575 245V115h75v130M587 115V85h51v30M612 85V52"/>
-      <path className="wm-building" d="M680 245V145h75v100M692 145v-28h51v28M718 117V85"/>
-      <path d="M215 245h570"/>
-      <path d="M225 257h550"/>
-      <path d="M250 268h520"/>
-      <path d="M280 278h440"/>
-    </g>,
-
-    <g key="16">
-      <path d="M150 245h700"/>
-      <path d="M190 230h620"/>
-      <path d="M230 215h540"/>
-      <path className="wm-building" d="M270 215v-65h55v65M280 150v-25h35v25M297 125V95"/>
-      <path className="wm-building" d="M360 215v-92h75v92M372 123V95h51v28M398 95V65"/>
-      <path className="wm-building" d="M475 215v-112h80v112M487 103V72h56v31M515 72V42"/>
-      <path className="wm-building" d="M595 215v-88h70v88M607 127v-25h46v25M630 102V75"/>
-      <path className="wm-building" d="M700 215v-62h48v62M710 153v-25h28v25M724 128V103"/>
-      <path d="M255 230h490"/>
-      <path d="M285 245q215-35 430 0"/>
-      <path d="M320 257q180-28 360 0"/>
-    </g>,
-
-    <g key="17">
-      <path d="M155 75h690v180H155z"/>
-      <path d="M180 100h640v130H180z"/>
-      <path d="M210 100v130M250 100v130M290 100v130M330 100v130M370 100v130M410 100v130M450 100v130M490 100v130M530 100v130M570 100v130M610 100v130M650 100v130M690 100v130M730 100v130M770 100v130"/>
-      <path d="M180 130h640M180 160h640M180 190h640M180 220h640"/>
-      <path d="M205 205q55-65 110 0t110 0t110 0t110 0t110 0"/>
-      <path d="M205 215q55-65 110 0t110 0t110 0t110 0t110 0"/>
-      <circle cx="500" cy="165" r="34"/>
-      <circle cx="500" cy="165" r="26"/>
-    </g>,
-
-    <g key="18">
-      <circle cx="500" cy="165" r="126"/>
-      <circle cx="500" cy="165" r="116"/>
-      <circle cx="500" cy="165" r="104"/>
-      <circle cx="500" cy="165" r="91"/>
-      <path d="M500 53c18 28 28 52 28 112s-10 84-28 112"/>
-      <path d="M500 53c-18 28-28 52-28 112s10 84 28 112"/>
-      <path d="M388 165c28-18 52-28 112-28s84 10 112 28"/>
-      <path d="M388 165c28 18 52 28 112 28s84-10 112-28"/>
-      <path d="M420 85q80 55 160 0M420 245q80-55 160 0"/>
-      <path d="M340 165h45M615 165h45"/>
-      <circle cx="500" cy="165" r="31"/>
-      <circle cx="500" cy="165" r="21"/>
-      <text x="500" y="170" textAnchor="middle" className="wm-letter">VL</text>
-      <path d="M500 112v-20M500 238v-20"/>
-    </g>,
-
-    <g key="19">
-      <path d="M125 218h750"/>
-      <path d="M125 232h750"/>
-      <path d="M165 202h670"/>
-      <path d="M165 248h670"/>
-      <path d="M210 202l22-30 22 30 22-30 22 30 22-30 22 30 22-30 22 30 22-30 22 30 22-30 22 30 22-30 22 30 22-30 22 30 22-30 22 30 22-30 22 30"/>
-      <circle cx="220" cy="225" r="18"/>
-      <circle cx="780" cy="225" r="18"/>
-      <circle cx="220" cy="225" r="7"/>
-      <circle cx="780" cy="225" r="7"/>
-      <path d="M220 207v36M780 207v36"/>
-      <circle cx="500" cy="126" r="51"/>
-      <circle cx="500" cy="126" r="43"/>
-      <path d="M500 83v86M457 126h86M470 96l60 60M530 96l-60 60"/>
-      <text x="500" y="121" textAnchor="middle" className="wm-main">EUROSTAR</text>
-      <text x="500" y="141" textAnchor="middle" className="wm-letter">9020 · PARIS — LONDON</text>
-    </g>,
-  ];
-
-  return (
-    <svg
-      viewBox="0 0 1000 330"
-      preserveAspectRatio="none"
-      className="ticket-artwork-svg ticket-watermark-motif"
-      aria-hidden="true"
-    >
-      <g fill="none" stroke="currentColor" strokeLinecap="round" strokeLinejoin="round">
-        {motifs[((variant % 19) + 19) % 19]}
-      </g>
-    </svg>
-  );
-}
-
-function getWatermarkVariant(id) {
-  const variants = {
-    "clink-dorm": 0,
-    "clink-room4": 1,
-    "stchris": 2,
-    "crestfield": 3,
-    "central": 4,
-    "imperial": 5,
-
-    "tesco": 6,
-    "restaurant": 7,
-    "mix": 8,
-
-    "britishmuseum": 9,
-    "westminster": 10,
-    "buckingham": 11,
-    "nationalgallery": 12,
-    "camden": 13,
-    "towerbridge": 14,
-
-    "oldbailey": 15,
-    "hmsbelfast": 16,
-    "iwm": 17,
-    "firestation": 18
-  };
-
-  return variants[id] ?? 0;
-}
-
-function getProposalWatermarkVariant(id, usedVariants = []) {
-  const available = Array.from({ length: 19 }, (_, i) => i)
-    .filter((i) => !usedVariants.includes(i));
-
-  if (available.length === 0) return 0;
-
-  const text = String(id ?? "");
-  let hash = 2166136261;
-
-  for (let i = 0; i < text.length; i++) {
-    hash ^= text.charCodeAt(i);
-    hash = Math.imul(hash, 16777619);
-  }
-
-  return available[(hash >>> 0) % available.length];
-}
-
 function Ticket({ item, category, itemVotes, voterName, onVote, isAdmin, onDelete }) {
   const [open, setOpen] = useState(false);
   const [confirmDelete, setConfirmDelete] = useState(false);
-
   const votesObj = itemVotes || {};
-  const ouiNames = Object.entries(votesObj)
-    .filter(([, v]) => v === "oui")
-    .map(([n]) => n);
-  const nonNames = Object.entries(votesObj)
-    .filter(([, v]) => v === "non")
-    .map(([n]) => n);
-
+  const ouiNames = Object.entries(votesObj).filter(([, v]) => v === "oui").map(([n]) => n);
+  const nonNames = Object.entries(votesObj).filter(([, v]) => v === "non").map(([n]) => n);
   const myVote = voterName ? votesObj[voterName] : undefined;
   const long = item.desc.length > 130;
-
-  const canDelete =
-    item.author &&
-    onDelete &&
-    (isAdmin || (voterName && voterName === item.author));
+  const canDelete = item.author && onDelete && (isAdmin || (voterName && voterName === item.author));
 
   return (
-    <div className={`ticket-card ticket-category-${category}`}>
-
-      {/* =====================================================
-          PARTIE PRINCIPALE
-          ===================================================== */}
-      <div className="ticket-main-layer">
-
-        {/* ILLUSTRATION ARCHITECTURALE */}
-        <div className="ticket-artwork" aria-hidden="true">
-          <TicketWatermark variant={getWatermarkVariant(item.id)} />
-        </div>
-
-        {/* CONTENU */}
-        <div className="ticket-content-layer">
-
-          {/* EN-TÊTE TECHNIQUE */}
-          <div className="ticket-technical-header">
+    <div className="ticket-card" style={{ background: C.bone, border: `1px solid ${C.line}`, boxShadow: `6px 6px 0 rgba(11,15,20,0.14)` }}>
+      <div className="flex-1 p-6 flex flex-col gap-3">
+        <div className="ticket-header-premium">
+          <div className="ticket-header-top">
             <span>VOYAGE LONDRES · PASSENGER DOSSIER</span>
             <span>EUROSTAR 9020</span>
           </div>
 
-          {/* TITRE + PROPOSITION */}
-          <div className="ticket-title-area">
+          <div className="ticket-header-rule" />
 
-            <div className="ticket-title-main">
-              <h3>{item.name}</h3>
-
-              <div className="ticket-address">
-                <MapPin size={11} />
-                <span>{item.where}</span>
+          <div className="flex items-start justify-between gap-3">
+            <div>
+              <h3 style={{ ...serif, fontWeight: 600, fontSize: 21, color: C.ink }}>{item.name}</h3>
+              <div className="flex items-center gap-1.5 mt-1.5" style={{ color: C.graphite, fontSize: 12, ...mono }}>
+                <MapPin size={12} /> {item.where}
               </div>
             </div>
-
             {item.author && (
-              <span className="ticket-proposal-mark">
+              <span className="shrink-0 px-2 py-1" style={{ border: `1px solid ${C.brass}`, color: C.brass, fontSize: 10.5, letterSpacing: 1, ...mono }}>
                 PROPOSITION
               </span>
             )}
-
           </div>
 
-          {/* DATE / ROUTE */}
-          <div className="ticket-main-route">
+          <div className="ticket-header-bottom">
             <span>13 MAR — 17 MAR 2028</span>
             <span>PARIS → LONDON</span>
           </div>
+        </div>
+        <p style={{ color: C.ink, fontSize: 14.5, lineHeight: 1.55, opacity: 0.85, maxWidth: "60ch" }}>
+          {long && !open ? item.desc.slice(0, 128) + "…" : item.desc}
+        </p>
+        {long && (
+          <button onClick={() => setOpen(!open)} className="flex items-center gap-1 self-start" style={{ color: C.brass, fontSize: 12, ...mono }}>
+            {open ? <>Réduire le descriptif <ChevronUp size={13} /></> : <>Lire le descriptif <ChevronDown size={13} /></>}
+          </button>
+        )}
+        <div className="ticket-route-premium">
+          <div className="ticket-route-head">
+            <span>PARIS</span>
+            <span className="ticket-route-date">13—17 MAR 2028</span>
+            <span>LONDON</span>
+          </div>
 
-          {/* DESCRIPTION */}
-          <div className="ticket-description-block">
-            <p>
-              {long && !open
-                ? item.desc.slice(0, 128) + "…"
-                : item.desc}
-            </p>
+          <div className="ticket-route-line">
+            <span className="ticket-route-dot ticket-route-dot-start" />
+            <span className="ticket-route-track" />
+            <span className="ticket-route-dot ticket-route-dot-end" />
+          </div>
 
-            {long && (
-              <button
-                type="button"
-                onClick={() => setOpen(!open)}
-                className="ticket-read-more"
-              >
-                {open
-                  ? <>Réduire le descriptif ↑</>
-                  : <>Lire le descriptif ↓</>}
+          <div className="ticket-route-codes">
+            <span>CDG</span>
+            <span>STP</span>
+          </div>
+
+          <div className="ticket-microprint">
+            PARIS × LONDON · EUROSTAR 9020 · PASSENGER DOSSIER · 2028
+          </div>
+        </div>
+
+        {item.meta && (
+          <div className="flex flex-col gap-1 py-1">
+            {item.meta.map((m, i) => (
+              <div key={i} style={{ fontSize: 12, lineHeight: 1.5 }}>
+                <span style={{ ...mono, color: C.brass, fontWeight: 500 }}>{m.label} — </span>
+                <span style={{ color: C.ink, opacity: 0.8 }}>{m.value}</span>
+              </div>
+            ))}
+          </div>
+        )}
+        {item.author && (
+          <div className="pt-2 flex items-center justify-between gap-3" style={{ borderTop: `1px dashed ${C.line}` }}>
+            <span style={{ ...serif, fontStyle: "italic", fontSize: 13.5, color: C.ink, opacity: 0.75 }}>— proposée par {item.author}</span>
+            {canDelete && !confirmDelete && (
+              <button onClick={() => setConfirmDelete(true)} style={{ color: C.graphite, fontSize: 11.5, ...mono, cursor: "pointer" }}>
+                Retirer
               </button>
             )}
-          </div>
-
-          {/* INFOS SUPPLÉMENTAIRES */}
-          {item.meta && (
-            <div className="ticket-meta-block">
-              {item.meta.map((m, i) => (
-                <div key={i}>
-                  <span>{m.label}</span>
-                  <span>{m.value}</span>
-                </div>
-              ))}
-            </div>
-          )}
-
-          {/* PROPOSITION */}
-          {item.author && (
-            <div className="ticket-author-row">
-
-              <span>
-                — proposée par {item.author}
-              </span>
-
-              {canDelete && !confirmDelete && (
-                <button
-                  type="button"
-                  onClick={() => setConfirmDelete(true)}
-                >
-                  Retirer
+            {canDelete && confirmDelete && (
+              <span className="flex items-center gap-2">
+                <span style={{ color: C.signal, fontSize: 11.5, ...mono }}>Supprimer ?</span>
+                <button onClick={onDelete} style={{ color: C.signal, fontSize: 11.5, ...mono, fontWeight: 600, cursor: "pointer" }}>
+                  Oui
                 </button>
-              )}
-
-              {canDelete && confirmDelete && (
-                <span className="ticket-delete-confirm">
-
-                  <span>Supprimer ?</span>
-
-                  <button
-                    type="button"
-                    onClick={onDelete}
-                  >
-                    Oui
-                  </button>
-
-                  <button
-                    type="button"
-                    onClick={() => setConfirmDelete(false)}
-                  >
-                    Annuler
-                  </button>
-
-                </span>
-              )}
-
-            </div>
-          )}
-
-          {/* =================================================
-              COUPON FERROVIAIRE
-              ================================================= */}
-          <div className="ticket-coupon">
-
-            <div className="ticket-coupon-topline">
-              <span>PARIS</span>
-              <span>13–17 MAR 2028</span>
-              <span>LONDON</span>
-            </div>
-
-            <div className="ticket-coupon-route">
-              <span>GARE DU NORD</span>
-              <span className="ticket-coupon-arrow">→</span>
-              <span>ST PANCRAS</span>
-            </div>
-
-            <div className="ticket-coupon-bottomline">
-              <span>EUROSTAR 9020</span>
-              <span>PASSENGER DOSSIER · 2028</span>
-            </div>
-
+                <button onClick={() => setConfirmDelete(false)} style={{ color: C.graphite, fontSize: 11.5, ...mono, cursor: "pointer" }}>
+                  Annuler
+                </button>
+              </span>
+            )}
           </div>
-
-        </div>
+        )}
       </div>
 
-      {/* =====================================================
-          PERFORATION — NE PAS TOUCHER
-          ===================================================== */}
       <div className="ticket-divider-desktop">
         <div className="ticket-divider-line" />
         <div className="ticket-notch ticket-notch-top" />
@@ -748,147 +286,26 @@ function Ticket({ item, category, itemVotes, voterName, onVote, isAdmin, onDelet
 
       <div className="ticket-divider-mobile" />
 
-      {/* =====================================================
-          VOTE
-          ===================================================== */}
-      <div className="ticket-vote-panel">
-
-        <div className="ticket-vote-seal" aria-hidden="true">
-          <svg viewBox="0 0 180 180">
-
-            <defs>
-              <path
-                id={`vlSealArc-${item.id || item.name}`}
-                d="M 90,90 m -65,0 a 65,65 0 1,1 130,0"
-              />
-            </defs>
-
-            <circle
-              cx="90"
-              cy="90"
-              r="70"
-              fill="none"
-              stroke="currentColor"
-              strokeWidth="1.2"
-            />
-
-            <circle
-              cx="90"
-              cy="90"
-              r="64"
-              fill="none"
-              stroke="currentColor"
-              strokeWidth=".6"
-              strokeDasharray="1.5 3"
-            />
-
-            <circle
-              cx="90"
-              cy="90"
-              r="50"
-              fill="none"
-              stroke="currentColor"
-              strokeWidth=".8"
-            />
-
-            <circle
-              cx="90"
-              cy="90"
-              r="38"
-              fill="none"
-              stroke="currentColor"
-              strokeWidth=".5"
-            />
-
-            <text className="seal-arc-text">
-              <textPath
-                href={`#vlSealArc-${item.id || item.name}`}
-                startOffset="50%"
-                textAnchor="middle"
-              >
-                VOYAGE LONDRES · PARIS — LONDON
-              </textPath>
-            </text>
-
-            <g fill="none" stroke="currentColor" strokeLinecap="round">
-              <path d="M90 48 V132" strokeWidth="1" />
-              <path d="M48 90 H132" strokeWidth="1" />
-              <path d="M61 61 L119 119" strokeWidth=".65" />
-              <path d="M119 61 L61 119" strokeWidth=".65" />
-              <circle cx="90" cy="90" r="16" strokeWidth="1" />
-            </g>
-
-            <text
-              x="90"
-              y="87"
-              textAnchor="middle"
-              className="seal-main"
-            >
-              VL
-            </text>
-
-            <text
-              x="90"
-              y="105"
-              textAnchor="middle"
-              className="seal-year"
-            >
-              2028
-            </text>
-
-          </svg>
+      <div className="flex flex-col items-center justify-center gap-3 px-6 py-5 md:w-56" style={{ background: C.boneAlt }}>
+        <div className="text-center">
+          <div style={{ ...serif, fontWeight: 600, fontSize: 18, color: C.ink }}>{item.price}</div>
+          <div style={{ ...mono, fontSize: 10, color: C.graphite, letterSpacing: 1 }}>par personne</div>
         </div>
-
-        <div className="ticket-vote-content">
-
-          <div className="ticket-price">
-            <strong>{item.price}</strong>
-            <span>par personne</span>
-          </div>
-
-          <div className="ticket-vote-buttons">
-            <VoteStamp
-              label="Oui"
-              kind="oui"
-              active={myVote === "oui"}
-              disabled={!voterName}
-              onClick={() => onVote("oui")}
-            />
-
-            <VoteStamp
-              label="Non"
-              kind="non"
-              active={myVote === "non"}
-              disabled={!voterName}
-              onClick={() => onVote("non")}
-            />
-          </div>
-
-          <div className="ticket-vote-result">
-
-            {ouiNames.length === 0 && nonNames.length === 0 ? (
-              "Aucun vote pour l'instant"
-            ) : (
-              <>
-                {ouiNames.length > 0 && (
-                  <div>
-                    Oui ({ouiNames.length}) : {ouiNames.join(", ")}
-                  </div>
-                )}
-
-                {nonNames.length > 0 && (
-                  <div>
-                    Non ({nonNames.length}) : {nonNames.join(", ")}
-                  </div>
-                )}
-              </>
-            )}
-
-          </div>
-
+        <div className="flex gap-2">
+          <VoteStamp label="Oui" kind="oui" active={myVote === "oui"} disabled={!voterName} onClick={() => onVote("oui")} />
+          <VoteStamp label="Non" kind="non" active={myVote === "non"} disabled={!voterName} onClick={() => onVote("non")} />
+        </div>
+        <div className="text-center" style={{ ...mono, fontSize: 10.5, color: C.graphite, lineHeight: 1.5 }}>
+          {ouiNames.length === 0 && nonNames.length === 0 ? (
+            "Aucun vote pour l'instant"
+          ) : (
+            <>
+              {ouiNames.length > 0 && <div style={{ color: C.ink }}>Oui ({ouiNames.length}) : {ouiNames.join(", ")}</div>}
+              {nonNames.length > 0 && <div>Non ({nonNames.length}) : {nonNames.join(", ")}</div>}
+            </>
+          )}
         </div>
       </div>
-
     </div>
   );
 }
@@ -2646,38 +2063,6 @@ export default function App() {
       category: "repas",
     }));
 
-  const proposalItems = [
-    ...(data.customActivities || []),
-    ...(data.customMeals || []),
-    ...dbCustomActivities,
-    ...dbCustomMeals,
-  ];
-
-  const proposalWatermarks = {};
-  const shuffledVariants = Array.from({ length: 19 }, (_, i) => i);
-
-  for (let i = shuffledVariants.length - 1; i > 0; i--) {
-    const a = String(proposalItems[i % Math.max(proposalItems.length, 1)]?.id ?? i);
-    let hash = 2166136261;
-
-    for (let j = 0; j < a.length; j++) {
-      hash ^= a.charCodeAt(j);
-      hash = Math.imul(hash, 16777619);
-    }
-
-    const j = (hash >>> 0) % (i + 1);
-    [shuffledVariants[i], shuffledVariants[j]] = [
-      shuffledVariants[j],
-      shuffledVariants[i],
-    ];
-  }
-
-  [...proposalItems]
-    .sort((a, b) => String(a.id).localeCompare(String(b.id)))
-    .forEach((item, index) => {
-      proposalWatermarks[item.id] = shuffledVariants[index % 19];
-    });
-
   const activitiesAll = [
     ...ACTIVITIES_CULTURE,
     ...ACTIVITIES_SECURITY,
@@ -2760,42 +2145,21 @@ export default function App() {
         />
       )}
 
-      <header className="voyage-cover px-6 md:px-14 pt-12 pb-10">
-        <div className="voyage-cover-top">
-          <div className="voyage-kicker">
-            <span className="voyage-kicker-number">VL / 2028 / 01</span>
-            <span>FILIÈRE SÉCURITÉ · PRÉPARATION COLLECTIVE</span>
-          </div>
-
-          <button onClick={() => setShowAdminGate(true)} className="voyage-admin-button flex items-center gap-1.5 shrink-0">
+      <header className="px-6 md:px-14 pt-12 pb-10">
+        <div className="flex items-start justify-between gap-4">
+          <div style={{ ...mono, color: C.brass, fontSize: 11.5, letterSpacing: 2 }}>FILIÈRE SÉCURITÉ · PRÉPARATION COLLECTIVE</div>
+          <button onClick={() => setShowAdminGate(true)} className="flex items-center gap-1.5 shrink-0" style={{ color: C.graphite, fontSize: 11, ...mono, cursor: "pointer" }}>
             <Lock size={11} /> Organisateur
           </button>
         </div>
-
-        <div className="voyage-cover-main">
-          <div className="voyage-cover-title">
-            <div className="voyage-cover-eyebrow">PASSENGER TRAVEL DOSSIER</div>
-            <h1>Paris <span>—</span> Londres</h1>
-            <div className="voyage-cover-subtitle">PARIS → LONDON · 13—17 MARS 2028</div>
-          </div>
-
-          <div className="voyage-seal">
-            <span>VL</span>
-            <small>2028</small>
-          </div>
-
-          <div className="hidden md:block voyage-cover-route">
-            <RoutePath />
-          </div>
+        <div className="flex items-end justify-between flex-wrap gap-6 mt-3">
+          <h1 style={{ ...serif, color: C.bone, fontSize: "clamp(38px,6vw,64px)", fontWeight: 600, lineHeight: 1.02 }}>Paris — Londres</h1>
+          <div className="hidden md:block"><RoutePath /></div>
         </div>
-
-        <div className="voyage-cover-info">
-          <span>EUROSTAR 9020</span>
-          <i />
-          <span>13 → 17 MARS 2028</span>
-          <i />
-          <span>4 NUITS</span>
-          <i />
+        <div className="flex items-center gap-4 flex-wrap mt-4" style={{ ...mono, color: C.bone, fontSize: 12.5, opacity: 0.85 }}>
+          <span>EUROSTAR 9020</span><span style={{ color: C.lineOnInk }}>·</span>
+          <span>13 → 17 MARS 2028</span><span style={{ color: C.lineOnInk }}>·</span>
+          <span>4 NUITS</span><span style={{ color: C.lineOnInk }}>·</span>
           <span>15 PAX MAX</span>
         </div>
         {voterName && (
@@ -2805,21 +2169,12 @@ export default function App() {
         )}
       </header>
 
-      <nav className="voyage-tabs px-6 md:px-14" style={{ borderBottom: `1px solid ${C.lineOnInk}` }}>
+      <nav className="px-6 md:px-14 flex gap-14" style={{ borderBottom: `1px solid ${C.lineOnInk}` }}>
         {TABS.map((t) => (
-          <button
-            key={t.key}
-            onClick={() => setTab(t.key)}
-            className={`voyage-tab ${tab === t.key ? "active" : ""}`}
-          >
-            <span className="voyage-tab-number">{t.chapter}</span>
-            <span className="voyage-tab-content">
-              <span className="voyage-tab-label">
-                {t.key === "dossier" && <FileText size={14} />}
-                {t.label}
-              </span>
-              <span className="voyage-tab-subtitle">{t.subtitle}</span>
-            </span>
+          <button key={t.key} onClick={() => setTab(t.key)} className="pb-4 relative flex items-center gap-1.5" style={{ ...serif, fontSize: 17, fontWeight: 600, color: tab === t.key ? C.bone : C.graphite }}>
+            {t.key === "dossier" && <FileText size={15} />}
+            {t.label}
+            {tab === t.key && <span className="absolute left-0 right-0" style={{ bottom: -1, height: 2, background: C.signal }} />}
           </button>
         ))}
       </nav>
@@ -2903,3 +2258,4 @@ export default function App() {
     </div>
   );
 }
+

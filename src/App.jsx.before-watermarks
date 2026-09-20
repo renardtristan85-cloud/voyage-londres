@@ -229,344 +229,6 @@ function VoteStamp({ label, active, disabled, onClick, kind }) {
   );
 }
 
-
-function TicketWatermark({ variant = 0 }) {
-  const motifs = [
-    <g key="01">
-      <g opacity=".34">
-        <circle cx="500" cy="165" r="116"/>
-        <circle cx="500" cy="165" r="108"/>
-        <circle cx="500" cy="165" r="99"/>
-        <circle cx="500" cy="165" r="91"/>
-      </g>
-      <path d="M92 245 C210 210 275 120 385 156 S620 220 908 82"/>
-      <path d="M92 255 C210 220 275 130 385 166 S620 230 908 92"/>
-      <path className="wm-building" d="M115 238V158h22v-34h25v34h28v80M149 124V98h10v26M137 238v-44h31v44"/>
-      <path className="wm-building" d="M818 238V135h20v-28h24v28h30v103M850 107V80h11v27M836 238v-52h42v52"/>
-      <path d="M385 156l-12-9m12 9-6 14M620 220l12-8m-12 8 2-15"/>
-      <circle cx="500" cy="165" r="42"/>
-      <circle cx="500" cy="165" r="34"/>
-      <path d="M500 131v68M466 165h68M476 141l48 48M524 141l-48 48"/>
-      <text x="500" y="161" textAnchor="middle" className="wm-letter">PARIS · LONDON</text>
-      <text x="500" y="180" textAnchor="middle" className="wm-letter">48°51′N · 51°30′N</text>
-    </g>,
-
-    <g key="02">
-      <g opacity=".32">
-        <circle cx="500" cy="165" r="126"/>
-        <circle cx="500" cy="165" r="116"/>
-        <circle cx="500" cy="165" r="106"/>
-        <circle cx="500" cy="165" r="96"/>
-      </g>
-      <g>
-        <ellipse cx="500" cy="165" rx="210" ry="54"/>
-        <ellipse cx="500" cy="165" rx="210" ry="43"/>
-        <ellipse cx="500" cy="165" rx="210" ry="32"/>
-        <ellipse cx="500" cy="165" rx="54" ry="145"/>
-        <ellipse cx="500" cy="165" rx="43" ry="145"/>
-        <ellipse cx="500" cy="165" rx="32" ry="145"/>
-      </g>
-      <path d="M270 165h460M500 35v260"/>
-      <path d="M338 83l324 164M662 83L338 247"/>
-      <circle cx="500" cy="165" r="18"/>
-      <circle cx="500" cy="165" r="7"/>
-    </g>,
-
-    <g key="03">
-      <path d="M95 92 C210 38 290 148 405 94 S600 40 905 112"/>
-      <path d="M95 106 C210 52 290 162 405 108 S600 54 905 126"/>
-      <path d="M95 120 C210 66 290 176 405 122 S600 68 905 140"/>
-      <path d="M95 134 C210 80 290 190 405 136 S600 82 905 154"/>
-      <path d="M95 148 C210 94 290 204 405 150 S600 96 905 168"/>
-      <path d="M95 162 C210 108 290 218 405 164 S600 110 905 182"/>
-      <path d="M95 176 C210 122 290 232 405 178 S600 124 905 196"/>
-      <path d="M95 190 C210 136 290 246 405 192 S600 138 905 210"/>
-      <path d="M95 204 C210 150 290 260 405 206 S600 152 905 224"/>
-      <path d="M95 218 C210 164 290 274 405 220 S600 166 905 238"/>
-      <circle cx="500" cy="165" r="48"/>
-      <circle cx="500" cy="165" r="37"/>
-      <path d="M470 165q30-30 60 0q-30 30-60 0M500 135v60"/>
-    </g>,
-
-    <g key="04">
-      <circle cx="500" cy="165" r="120"/>
-      <circle cx="500" cy="165" r="111"/>
-      <circle cx="500" cy="165" r="101"/>
-      <path d="M500 38v254M373 165h254"/>
-      <path d="M410 75l180 180M590 75L410 255"/>
-      <path d="M500 58l12 91 91-12-78 32 78 32-91-12-12 91-12-91-91 12 78-32-78-32 91 12z"/>
-      <circle cx="500" cy="165" r="16"/>
-      <circle cx="500" cy="165" r="5"/>
-      <path d="M500 38l-5 15m5-15 5 15M627 165l-15-5m15 5-15 5M500 292l-5-15m5 15 5-15M373 165l15-5m-15 5 15 5"/>
-    </g>,
-
-    <g key="05">
-      <path d="M160 78h680v174H160z"/>
-      <path d="M190 105h620M190 135h620M190 165h620M190 195h620M190 225h620"/>
-      <path d="M220 78v174M270 78v174M320 78v174M370 78v174M420 78v174M470 78v174M520 78v174M570 78v174M620 78v174M670 78v174M720 78v174M770 78v174"/>
-      <path d="M235 215 C285 175 315 190 345 150 S420 115 455 148 S525 190 565 145 S650 115 690 151 S750 190 790 135"/>
-      <circle cx="345" cy="150" r="6"/>
-      <circle cx="565" cy="145" r="6"/>
-      <circle cx="790" cy="135" r="6"/>
-      <path d="M210 92l18-10M790 238l18-10"/>
-    </g>,
-
-    <g key="06">
-      <g opacity=".3">
-        <path d="M145 72h710v186H145z"/>
-        <path d="M175 102h650M175 132h650M175 162h650M175 192h650M175 222h650"/>
-        <path d="M220 72v186M280 72v186M340 72v186M400 72v186M460 72v186M520 72v186M580 72v186M640 72v186M700 72v186M760 72v186"/>
-      </g>
-      <path d="M210 215c35-48 65-22 92-54s62-4 88-42 61 5 92-24 65 30 96 0 62 28 101-17"/>
-      <path d="M215 229c35-48 65-22 92-54s62-4 88-42 61 5 92-24 65 30 96 0 62 28 101-17"/>
-      <circle cx="302" cy="161" r="7"/>
-      <circle cx="478" cy="95" r="7"/>
-      <circle cx="673" cy="109" r="7"/>
-      <path d="M302 161l-18 19m18-19 20-17M478 95l18 18m-18-18-22-9M673 109l20 18m-20-18-5-24"/>
-    </g>,
-
-    <g key="07">
-      <path className="wm-building" d="M300 240V135h400v105"/>
-      <path className="wm-building" d="M325 135V105h350v30"/>
-      <path className="wm-building" d="M355 105V82h290v23"/>
-      <path className="wm-building" d="M390 82V62h220v20"/>
-      <path className="wm-building" d="M445 62V42h110v20"/>
-      <path d="M280 240h440"/>
-      <path d="M325 240v-70h28v70M380 240v-70h28v70M435 240v-70h28v70M490 240v-70h28v70M545 240v-70h28v70M600 240v-70h28v70M655 240v-70h20v70"/>
-      <path d="M270 252h460"/>
-      <path d="M350 252q150-32 300 0"/>
-    </g>,
-
-    <g key="08">
-      <circle cx="500" cy="165" r="126"/>
-      <circle cx="500" cy="165" r="116"/>
-      <circle cx="500" cy="165" r="89"/>
-      <circle cx="500" cy="165" r="75"/>
-      <path d="M500 76v89l55 32"/>
-      <path d="M500 52v12M500 266v12M387 165h12M601 165h12"/>
-      <path d="M420 85l9 9M580 85l-9 9M420 245l9-9M580 245l-9-9"/>
-      <circle cx="500" cy="165" r="10"/>
-      <circle cx="500" cy="165" r="4"/>
-      <text x="500" y="224" textAnchor="middle" className="wm-letter">TRAVEL • 9020</text>
-    </g>,
-
-    <g key="09">
-      <circle cx="500" cy="165" r="116"/>
-      <circle cx="500" cy="165" r="105"/>
-      <circle cx="500" cy="165" r="91"/>
-      <path d="M500 49v232M384 165h232"/>
-      <path d="M419 84l162 162M581 84L419 246"/>
-      <path d="M500 66c-26 42-26 91 0 99 26-8 26-57 0-99z"/>
-      <path d="M500 165c42-26 91-26 99 0-8 26-57 26-99 0z"/>
-      <path d="M500 264c26-42 26-91 0-99-26 8-26 57 0 99z"/>
-      <path d="M401 165c42 26 91 26 99 0-8-26-57-26-99 0z"/>
-      <circle cx="500" cy="165" r="19"/>
-      <circle cx="500" cy="165" r="7"/>
-    </g>,
-
-    <g key="10">
-      <path d="M145 82h710v166H145z"/>
-      <path d="M165 102h670v126H165z"/>
-      <path d="M165 102l670 126M165 228l670-126"/>
-      <path d="M250 102l85 126M335 102l85 126M420 102l85 126M505 102l85 126M590 102l85 126M675 102l85 126"/>
-      <path d="M250 228l85-126M335 228l85-126M420 228l85-126M505 228l85-126M590 228l85-126M675 228l85-126"/>
-      <circle cx="500" cy="165" r="48"/>
-      <circle cx="500" cy="165" r="39"/>
-      <path d="M476 165q24-24 48 0q-24 24-48 0"/>
-      <path d="M500 141v48"/>
-    </g>,
-
-
-    <g key="11">
-      <g opacity=".28">
-        <circle cx="500" cy="165" r="128"/>
-        <circle cx="500" cy="165" r="119"/>
-        <circle cx="500" cy="165" r="110"/>
-      </g>
-      <path d="M170 82h660M170 248h660"/>
-      <path d="M205 102h590M205 228h590"/>
-      <text x="500" y="128" textAnchor="middle" className="wm-main">48°51′N</text>
-      <text x="500" y="158" textAnchor="middle" className="wm-letter">PARIS · FRANCE</text>
-      <path d="M350 173h300"/>
-      <text x="500" y="204" textAnchor="middle" className="wm-main">51°30′N</text>
-      <text x="500" y="226" textAnchor="middle" className="wm-letter">LONDON · UNITED KINGDOM</text>
-      <circle cx="500" cy="165" r="9"/>
-      <path d="M500 55v22M500 253v22M390 165h22M588 165h22"/>
-    </g>,
-
-    <g key="12">
-      <path d="M210 260V135c0-73 108-108 290-108s290 35 290 108v125"/>
-      <path d="M250 260V145c0-52 94-82 250-82s250 30 250 82v115"/>
-      <path d="M290 260V155c0-34 78-57 210-57s210 23 210 57v105"/>
-      <path d="M330 260v-91c0-20 62-35 170-35s170 15 170 35v91"/>
-      <path d="M370 260v-77c0-10 46-20 130-20s130 10 130 20v77"/>
-      <path d="M180 270h640"/>
-      <path d="M250 278h500"/>
-      <path d="M320 286h360"/>
-      <circle cx="500" cy="165" r="7"/>
-    </g>,
-
-    <g key="13">
-      <path d="M145 235L315 190L430 210L570 125L700 155L855 85"/>
-      <path d="M145 247L315 202L430 222L570 137L700 167L855 97"/>
-      <path d="M145 259L315 214L430 234L570 149L700 179L855 109"/>
-      <path d="M145 271L315 226L430 246L570 161L700 191L855 121"/>
-      <path d="M145 223L315 178L430 198L570 113L700 143L855 73"/>
-      <circle cx="315" cy="190" r="8"/>
-      <circle cx="430" cy="210" r="8"/>
-      <circle cx="570" cy="125" r="8"/>
-      <circle cx="700" cy="155" r="8"/>
-      <path d="M315 175v30M430 195v30M570 110v30M700 140v30"/>
-    </g>,
-
-    <g key="14">
-      <circle cx="500" cy="165" r="125"/>
-      <circle cx="500" cy="165" r="114"/>
-      <circle cx="500" cy="165" r="103"/>
-      <circle cx="500" cy="165" r="74"/>
-      <circle cx="500" cy="165" r="62"/>
-      <path d="M500 40v250M375 165h250"/>
-      <path d="M412 77l176 176M588 77L412 253"/>
-      <path d="M500 91c-20 42-20 106 0 148c20-42 20-106 0-148z"/>
-      <path d="M426 165c42-20 106-20 148 0c-42 20-106 20-148 0z"/>
-      <path d="M452 117q48-48 96 0q-48 48-96 0z"/>
-      <path d="M452 213q48 48 96 0q-48-48-96 0z"/>
-      <circle cx="500" cy="165" r="15"/>
-    </g>,
-
-    <g key="15">
-      <path className="wm-building" d="M245 245V155h70v90M255 155v-28h50v28M280 127V92"/>
-      <path className="wm-building" d="M345 245V125h80v120M357 125V95h56v30M385 95V62"/>
-      <path className="wm-building" d="M460 245V145h80v100M472 145v-30h56v30M500 115V80"/>
-      <path className="wm-building" d="M575 245V115h75v130M587 115V85h51v30M612 85V52"/>
-      <path className="wm-building" d="M680 245V145h75v100M692 145v-28h51v28M718 117V85"/>
-      <path d="M215 245h570"/>
-      <path d="M225 257h550"/>
-      <path d="M250 268h520"/>
-      <path d="M280 278h440"/>
-    </g>,
-
-    <g key="16">
-      <path d="M150 245h700"/>
-      <path d="M190 230h620"/>
-      <path d="M230 215h540"/>
-      <path className="wm-building" d="M270 215v-65h55v65M280 150v-25h35v25M297 125V95"/>
-      <path className="wm-building" d="M360 215v-92h75v92M372 123V95h51v28M398 95V65"/>
-      <path className="wm-building" d="M475 215v-112h80v112M487 103V72h56v31M515 72V42"/>
-      <path className="wm-building" d="M595 215v-88h70v88M607 127v-25h46v25M630 102V75"/>
-      <path className="wm-building" d="M700 215v-62h48v62M710 153v-25h28v25M724 128V103"/>
-      <path d="M255 230h490"/>
-      <path d="M285 245q215-35 430 0"/>
-      <path d="M320 257q180-28 360 0"/>
-    </g>,
-
-    <g key="17">
-      <path d="M155 75h690v180H155z"/>
-      <path d="M180 100h640v130H180z"/>
-      <path d="M210 100v130M250 100v130M290 100v130M330 100v130M370 100v130M410 100v130M450 100v130M490 100v130M530 100v130M570 100v130M610 100v130M650 100v130M690 100v130M730 100v130M770 100v130"/>
-      <path d="M180 130h640M180 160h640M180 190h640M180 220h640"/>
-      <path d="M205 205q55-65 110 0t110 0t110 0t110 0t110 0"/>
-      <path d="M205 215q55-65 110 0t110 0t110 0t110 0t110 0"/>
-      <circle cx="500" cy="165" r="34"/>
-      <circle cx="500" cy="165" r="26"/>
-    </g>,
-
-    <g key="18">
-      <circle cx="500" cy="165" r="126"/>
-      <circle cx="500" cy="165" r="116"/>
-      <circle cx="500" cy="165" r="104"/>
-      <circle cx="500" cy="165" r="91"/>
-      <path d="M500 53c18 28 28 52 28 112s-10 84-28 112"/>
-      <path d="M500 53c-18 28-28 52-28 112s10 84 28 112"/>
-      <path d="M388 165c28-18 52-28 112-28s84 10 112 28"/>
-      <path d="M388 165c28 18 52 28 112 28s84-10 112-28"/>
-      <path d="M420 85q80 55 160 0M420 245q80-55 160 0"/>
-      <path d="M340 165h45M615 165h45"/>
-      <circle cx="500" cy="165" r="31"/>
-      <circle cx="500" cy="165" r="21"/>
-      <text x="500" y="170" textAnchor="middle" className="wm-letter">VL</text>
-      <path d="M500 112v-20M500 238v-20"/>
-    </g>,
-
-    <g key="19">
-      <path d="M125 218h750"/>
-      <path d="M125 232h750"/>
-      <path d="M165 202h670"/>
-      <path d="M165 248h670"/>
-      <path d="M210 202l22-30 22 30 22-30 22 30 22-30 22 30 22-30 22 30 22-30 22 30 22-30 22 30 22-30 22 30 22-30 22 30 22-30 22 30 22-30 22 30"/>
-      <circle cx="220" cy="225" r="18"/>
-      <circle cx="780" cy="225" r="18"/>
-      <circle cx="220" cy="225" r="7"/>
-      <circle cx="780" cy="225" r="7"/>
-      <path d="M220 207v36M780 207v36"/>
-      <circle cx="500" cy="126" r="51"/>
-      <circle cx="500" cy="126" r="43"/>
-      <path d="M500 83v86M457 126h86M470 96l60 60M530 96l-60 60"/>
-      <text x="500" y="121" textAnchor="middle" className="wm-main">EUROSTAR</text>
-      <text x="500" y="141" textAnchor="middle" className="wm-letter">9020 · PARIS — LONDON</text>
-    </g>,
-  ];
-
-  return (
-    <svg
-      viewBox="0 0 1000 330"
-      preserveAspectRatio="none"
-      className="ticket-artwork-svg ticket-watermark-motif"
-      aria-hidden="true"
-    >
-      <g fill="none" stroke="currentColor" strokeLinecap="round" strokeLinejoin="round">
-        {motifs[((variant % 19) + 19) % 19]}
-      </g>
-    </svg>
-  );
-}
-
-function getWatermarkVariant(id) {
-  const variants = {
-    "clink-dorm": 0,
-    "clink-room4": 1,
-    "stchris": 2,
-    "crestfield": 3,
-    "central": 4,
-    "imperial": 5,
-
-    "tesco": 6,
-    "restaurant": 7,
-    "mix": 8,
-
-    "britishmuseum": 9,
-    "westminster": 10,
-    "buckingham": 11,
-    "nationalgallery": 12,
-    "camden": 13,
-    "towerbridge": 14,
-
-    "oldbailey": 15,
-    "hmsbelfast": 16,
-    "iwm": 17,
-    "firestation": 18
-  };
-
-  return variants[id] ?? 0;
-}
-
-function getProposalWatermarkVariant(id, usedVariants = []) {
-  const available = Array.from({ length: 19 }, (_, i) => i)
-    .filter((i) => !usedVariants.includes(i));
-
-  if (available.length === 0) return 0;
-
-  const text = String(id ?? "");
-  let hash = 2166136261;
-
-  for (let i = 0; i < text.length; i++) {
-    hash ^= text.charCodeAt(i);
-    hash = Math.imul(hash, 16777619);
-  }
-
-  return available[(hash >>> 0) % available.length];
-}
-
 function Ticket({ item, category, itemVotes, voterName, onVote, isAdmin, onDelete }) {
   const [open, setOpen] = useState(false);
   const [confirmDelete, setConfirmDelete] = useState(false);
@@ -597,7 +259,164 @@ function Ticket({ item, category, itemVotes, voterName, onVote, isAdmin, onDelet
 
         {/* ILLUSTRATION ARCHITECTURALE */}
         <div className="ticket-artwork" aria-hidden="true">
-          <TicketWatermark variant={getWatermarkVariant(item.id)} />
+          <svg
+            viewBox="0 0 1000 330"
+            preserveAspectRatio="none"
+            className="ticket-artwork-svg"
+          >
+            <g
+              fill="none"
+              stroke="currentColor"
+              strokeLinecap="round"
+              strokeLinejoin="round"
+            >
+
+              {/* COURBES DE TRAJET */}
+              <g className="ticket-journey-lines">
+                <path d="M55 205 C180 95 305 100 420 177 C535 255 660 244 790 115" />
+                <path d="M80 218 C205 115 310 118 430 190 C550 262 675 250 810 130" />
+                <path d="M125 235 C235 145 330 142 438 201 C548 261 660 255 760 174" />
+                <path d="M310 205 C385 158 440 150 500 172 C560 194 610 205 690 171" />
+              </g>
+
+              {/* ================= PARIS ================= */}
+              <g className="ticket-building ticket-building-paris">
+
+                {/* façade */}
+                <path d="M58 224 L58 133 Q183 73 308 133 L308 224" />
+
+                {/* toiture */}
+                <path d="M42 134 Q183 54 324 134" />
+                <path d="M55 128 Q183 66 311 128" />
+
+                {/* ailes */}
+                <path d="M58 145 L33 145 L33 224" />
+                <path d="M308 145 L333 145 L333 224" />
+
+                {/* divisions */}
+                <path d="M82 136 L82 224" />
+                <path d="M116 120 L116 224" />
+                <path d="M150 105 L150 224" />
+                <path d="M183 99 L183 224" />
+                <path d="M216 105 L216 224" />
+                <path d="M250 120 L250 224" />
+                <path d="M284 136 L284 224" />
+
+                {/* fenêtres */}
+                <path d="M72 157 Q82 143 92 157 V190 H72 Z" />
+                <path d="M106 143 Q116 129 126 143 V190 H106 Z" />
+                <path d="M140 130 Q150 116 160 130 V190 H140 Z" />
+                <path d="M173 124 Q183 109 193 124 V190 H173 Z" />
+                <path d="M206 130 Q216 116 226 130 V190 H206 Z" />
+                <path d="M240 143 Q250 129 260 143 V190 H240 Z" />
+                <path d="M274 157 Q284 143 294 157 V190 H274 Z" />
+
+                {/* portes centrales */}
+                <path d="M168 224 V200 Q183 181 198 200 V224" />
+                <path d="M132 224 V204 Q150 185 168 204 V224" />
+                <path d="M198 224 V204 Q216 185 234 204 V224" />
+
+                <path d="M40 224 H326" />
+              </g>
+
+              {/* ================= LONDRES ================= */}
+              <g className="ticket-building ticket-building-london">
+
+                {/* façade */}
+                <path d="M565 224 V119 H865 V224" />
+
+                {/* toiture victorienne */}
+                <path d="M542 119 L715 37 L888 119" />
+                <path d="M558 119 L715 48 L872 119" />
+
+                {/* tour centrale */}
+                <path d="M682 119 V30 H748 V119" />
+                <path d="M673 30 H757" />
+                <path d="M684 22 H746" />
+                <path d="M694 14 H736" />
+                <path d="M703 7 H727" />
+
+                {/* horloge */}
+                <circle cx="715" cy="82" r="19" />
+                <circle cx="715" cy="82" r="15.5" />
+                <path d="M715 82 V71" />
+                <path d="M715 82 L725 87" />
+
+                {/* divisions */}
+                <path d="M589 119 V224" />
+                <path d="M624 105 V224" />
+                <path d="M659 91 V224" />
+                <path d="M771 91 V224" />
+                <path d="M806 105 V224" />
+                <path d="M841 119 V224" />
+
+                {/* arcades */}
+                <path d="M573 165 Q589 139 605 165 V224" />
+                <path d="M608 151 Q624 125 640 151 V224" />
+                <path d="M643 137 Q659 111 675 137 V224" />
+
+                <path d="M755 137 Q771 111 787 137 V224" />
+                <path d="M790 151 Q806 125 822 151 V224" />
+                <path d="M825 165 Q841 139 857 165 V224" />
+
+                {/* grande entrée */}
+                <path d="M678 224 V150 Q715 108 752 150 V224" />
+
+                <path d="M542 224 H888" />
+              </g>
+
+              {/* ================= FILIGRANES ================= */}
+              <g
+                className="ticket-watermarks"
+                fill="none"
+                stroke="currentColor"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+              >
+                {/* sceau circulaire */}
+                <circle cx="455" cy="145" r="62" />
+                <circle cx="455" cy="145" r="51" />
+                <circle cx="455" cy="145" r="39" />
+
+                {/* croix cartographique */}
+                <path d="M455 75 V215" />
+                <path d="M385 145 H525" />
+                <path d="M410 100 L500 190" />
+                <path d="M500 100 L410 190" />
+
+                {/* petits repères */}
+                <circle cx="455" cy="145" r="5" />
+                <path d="M455 66 V58" />
+                <path d="M455 224 V232" />
+                <path d="M376 145 H368" />
+                <path d="M534 145 H542" />
+
+                {/* tracé cartographique orbital */}
+                <path d="M350 105 C420 45 520 58 585 112 C645 162 600 218 520 230 C440 242 355 205 335 155" />
+                <path d="M335 155 C390 180 450 185 520 165 C570 150 615 120 650 88" />
+
+                {/* lignes techniques */}
+                <path d="M370 78 H540" />
+                <path d="M370 86 H500" />
+                <path d="M515 206 H610" />
+                <path d="M515 214 H575" />
+
+                {/* coordonnées */}
+                <circle cx="610" cy="78" r="3" />
+                <circle cx="625" cy="93" r="2" />
+                <circle cx="595" cy="92" r="2" />
+              </g>
+
+              {/* SOL / MICRO-LIGNES */}
+              <g className="ticket-ground-lines">
+                <path d="M28 239 H930" />
+                <path d="M78 249 H880" />
+                <path d="M145 258 H812" />
+                <path d="M230 267 H730" />
+              </g>
+
+            </g>
+          </svg>
         </div>
 
         {/* CONTENU */}
@@ -2645,38 +2464,6 @@ export default function App() {
       desc: option.description || "",
       category: "repas",
     }));
-
-  const proposalItems = [
-    ...(data.customActivities || []),
-    ...(data.customMeals || []),
-    ...dbCustomActivities,
-    ...dbCustomMeals,
-  ];
-
-  const proposalWatermarks = {};
-  const shuffledVariants = Array.from({ length: 19 }, (_, i) => i);
-
-  for (let i = shuffledVariants.length - 1; i > 0; i--) {
-    const a = String(proposalItems[i % Math.max(proposalItems.length, 1)]?.id ?? i);
-    let hash = 2166136261;
-
-    for (let j = 0; j < a.length; j++) {
-      hash ^= a.charCodeAt(j);
-      hash = Math.imul(hash, 16777619);
-    }
-
-    const j = (hash >>> 0) % (i + 1);
-    [shuffledVariants[i], shuffledVariants[j]] = [
-      shuffledVariants[j],
-      shuffledVariants[i],
-    ];
-  }
-
-  [...proposalItems]
-    .sort((a, b) => String(a.id).localeCompare(String(b.id)))
-    .forEach((item, index) => {
-      proposalWatermarks[item.id] = shuffledVariants[index % 19];
-    });
 
   const activitiesAll = [
     ...ACTIVITIES_CULTURE,

@@ -1,0 +1,82 @@
+/* =========================================================
+   VOYAGE LONDRES — BASE GLOBALE
+   ========================================================= */
+
+:root {
+  font-family: "IBM Plex Mono", ui-monospace, monospace;
+  color: #f2f0e9;
+  background: #0c1015;
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+html {
+  background: #0c1015;
+}
+
+body {
+  margin: 0;
+  min-width: 320px;
+  min-height: 100vh;
+  background: #0c1015;
+}
+
+button,
+input,
+textarea,
+select {
+  font: inherit;
+}
+
+button {
+  cursor: pointer;
+}
+
+button:focus-visible {
+  outline: 1px solid #a89468;
+  outline-offset: 3px;
+}
+
+#root {
+  width: 1126px;
+  max-width: 100%;
+  min-height: 100vh;
+  margin: 0 auto;
+  background: #0c1015;
+}
+
+h1,
+h2,
+h3,
+h4,
+p {
+  margin-top: 0;
+}
+
+p {
+  margin-bottom: 0;
+}
+
+::selection {
+  background: #a71930;
+  color: #f2f0e9;
+}
+
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: #0c1015;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #343b43;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #59616a;
+}

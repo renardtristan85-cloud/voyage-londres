@@ -882,7 +882,7 @@ main {
   justify-content: space-between;
   gap: 20px;
 
-  margin-top: 70px;
+  margin-top: 102px;
 }
 
 .ticket-title-main {
@@ -1103,7 +1103,7 @@ main {
   position: relative;
   z-index: 6;
 
-  margin-top: 18px;
+  margin-top: auto;
   padding-top: 12px;
 }
 
@@ -1806,16 +1806,9 @@ textarea:focus {
 }
 
 .ticket-vote-panel {
-  grid-column: 2;
-  grid-row: 1;
-
   width: 175px;
   min-width: 175px;
   max-width: 175px;
-
-  justify-self: stretch;
-  align-self: stretch;
-
   box-sizing: border-box;
 }
 
@@ -1861,108 +1854,3 @@ textarea:focus {
     opacity: .14;
   }
 }
-
-/* =========================================================
-   TICKET — VOTE ANCRÉ À DROITE
-   ========================================================= */
-
-.ticket-card {
-  display: grid;
-  grid-template-columns: minmax(0, 1fr) 175px;
-  grid-template-rows: 1fr;
-  width: min(100%, 1040px);
-}
-
-.ticket-main-layer {
-  grid-column: 1;
-  grid-row: 1;
-  min-width: 0;
-  width: 100%;
-}
-
-.ticket-divider-desktop {
-  grid-column: 1;
-  grid-row: 1;
-  justify-self: end;
-}
-
-.ticket-vote-panel {
-  grid-column: 2;
-  grid-row: 1;
-  justify-self: stretch;
-  align-self: stretch;
-
-  width: 175px;
-  min-width: 175px;
-  max-width: 175px;
-}
-
-@media (max-width: 620px) {
-  .ticket-card {
-    display: flex;
-  }
-
-  .ticket-main-layer,
-  .ticket-vote-panel {
-    grid-column: auto;
-    grid-row: auto;
-  }
-
-  .ticket-vote-panel {
-    width: 100%;
-    min-width: 0;
-    max-width: none;
-  }
-}
-
-
-/* CORRECTION POSITION COLONNE VOTE */
-
-.ticket-card {
-  display: grid !important;
-  grid-template-columns: minmax(0, 1fr) 175px !important;
-  grid-template-rows: 1fr !important;
-}
-
-.ticket-main-layer {
-  grid-column: 1 !important;
-  grid-row: 1 !important;
-}
-
-.ticket-vote-panel {
-  grid-column: 2 !important;
-  grid-row: 1 !important;
-
-  width: 175px !important;
-  min-width: 175px !important;
-  max-width: 175px !important;
-
-  justify-self: stretch !important;
-  align-self: stretch !important;
-}
-
-.ticket-divider-desktop {
-  grid-column: 1 !important;
-  grid-row: 1 !important;
-}
-
-.ticket-divider-mobile {
-  display: none;
-}
-
-@media (max-width: 620px) {
-  .ticket-card {
-    display: flex !important;
-  }
-
-  .ticket-vote-panel {
-    width: 100% !important;
-    min-width: 0 !important;
-    max-width: none !important;
-  }
-
-  .ticket-divider-mobile {
-    display: block;
-  }
-}
-

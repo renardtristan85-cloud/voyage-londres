@@ -1,0 +1,2732 @@
+.counter {
+  font-size: 16px;
+  padding: 5px 10px;
+  border-radius: 5px;
+  color: var(--accent);
+  background: var(--accent-bg);
+  border: 2px solid transparent;
+  transition: border-color 0.3s;
+  margin-bottom: 24px;
+
+  &:hover {
+    border-color: var(--accent-border);
+  }
+  &:focus-visible {
+    outline: 2px solid var(--accent);
+    outline-offset: 2px;
+  }
+}
+
+.hero {
+  position: relative;
+
+  .base,
+  .framework,
+  .vite {
+    inset-inline: 0;
+    margin: 0 auto;
+  }
+
+  .base {
+    width: 170px;
+    position: relative;
+    z-index: 0;
+  }
+
+  .framework,
+  .vite {
+    position: absolute;
+  }
+
+  .framework {
+    z-index: 1;
+    top: 34px;
+    height: 28px;
+    transform: perspective(2000px) rotateZ(300deg) rotateX(44deg) rotateY(39deg)
+      scale(1.4);
+  }
+
+  .vite {
+    z-index: 0;
+    top: 107px;
+    height: 26px;
+    width: auto;
+    transform: perspective(2000px) rotateZ(300deg) rotateX(40deg) rotateY(39deg)
+      scale(0.8);
+  }
+}
+
+#center {
+  display: flex;
+  flex-direction: column;
+  gap: 25px;
+  place-content: center;
+  place-items: center;
+  flex-grow: 1;
+
+  @media (max-width: 1024px) {
+    padding: 32px 20px 24px;
+    gap: 18px;
+  }
+}
+
+#next-steps {
+  display: flex;
+  border-top: 1px solid var(--border);
+  text-align: left;
+
+  & > div {
+    flex: 1 1 0;
+    padding: 32px;
+    @media (max-width: 1024px) {
+      padding: 24px 20px;
+    }
+  }
+
+  .icon {
+    margin-bottom: 16px;
+    width: 22px;
+    height: 22px;
+  }
+
+  @media (max-width: 1024px) {
+    flex-direction: column;
+    text-align: center;
+  }
+}
+
+#docs {
+  border-right: 1px solid var(--border);
+
+  @media (max-width: 1024px) {
+    border-right: none;
+    border-bottom: 1px solid var(--border);
+  }
+}
+
+#next-steps ul {
+  list-style: none;
+  padding: 0;
+  display: flex;
+  gap: 8px;
+  margin: 32px 0 0;
+
+  .logo {
+    height: 18px;
+  }
+
+  a {
+    color: var(--text-h);
+    font-size: 16px;
+    border-radius: 6px;
+    background: var(--social-bg);
+    display: flex;
+    padding: 6px 12px;
+    align-items: center;
+    gap: 8px;
+    text-decoration: none;
+    transition: box-shadow 0.3s;
+
+    &:hover {
+      box-shadow: var(--shadow);
+    }
+    .button-icon {
+      height: 18px;
+      width: 18px;
+    }
+  }
+
+  @media (max-width: 1024px) {
+    margin-top: 20px;
+    flex-wrap: wrap;
+    justify-content: center;
+
+    li {
+      flex: 1 1 calc(50% - 8px);
+    }
+
+    a {
+      width: 100%;
+      justify-content: center;
+      box-sizing: border-box;
+    }
+  }
+}
+
+#spacer {
+  height: 88px;
+  border-top: 1px solid var(--border);
+  @media (max-width: 1024px) {
+    height: 48px;
+  }
+}
+
+.ticks {
+  position: relative;
+  width: 100%;
+
+  &::before,
+  &::after {
+    content: '';
+    position: absolute;
+    top: -4.5px;
+    border: 5px solid transparent;
+  }
+
+  &::before {
+    left: 0;
+    border-left-color: var(--border);
+  }
+  &::after {
+    right: 0;
+    border-right-color: var(--border);
+  }
+}
+
+/* === VOYAGE LONDRES — NOUVEAU TICKET PREMIUM === */
+
+.ticket-card {
+  position: relative;
+  display: flex;
+  overflow: hidden;
+  min-height: 270px;
+  border-radius: 2px;
+  background:
+    radial-gradient(circle at 18% 20%, rgba(168,148,104,0.055), transparent 25%),
+    radial-gradient(circle at 82% 78%, rgba(120,130,140,0.045), transparent 28%),
+    repeating-linear-gradient(
+      0deg,
+      rgba(16,20,25,0.012) 0px,
+      rgba(16,20,25,0.012) 1px,
+      transparent 1px,
+      transparent 4px
+    ),
+    #f3f1ea !important;
+  border: 1px solid rgba(16,20,25,0.16) !important;
+  box-shadow:
+    0 12px 30px rgba(16,20,25,0.08),
+    2px 2px 0 rgba(16,20,25,0.035) !important;
+}
+
+.ticket-card::before {
+  content: "";
+  position: absolute;
+  inset: 9px;
+  pointer-events: none;
+  border: 1px solid rgba(168,148,104,0.12);
+  background:
+    repeating-linear-gradient(
+      90deg,
+      transparent 0,
+      transparent 22px,
+      rgba(168,148,104,0.018) 22px,
+      rgba(168,148,104,0.018) 23px
+    );
+}
+
+.ticket-card > .flex-1 {
+  position: relative;
+  z-index: 1;
+  padding: 30px 32px !important;
+}
+
+.ticket-card h3 {
+  letter-spacing: -0.015em;
+}
+
+.ticket-card p {
+  max-width: 58ch !important;
+}
+
+.ticket-card .ticket-divider-desktop {
+  position: relative;
+  z-index: 2;
+  width: 1px;
+  flex: 0 0 1px;
+  margin: 22px 0;
+  background: transparent;
+}
+
+.ticket-divider-line {
+  position: absolute;
+  inset: 0;
+  width: 1px;
+  background:
+    repeating-linear-gradient(
+      to bottom,
+      rgba(16,20,25,0.25) 0px,
+      rgba(16,20,25,0.25) 4px,
+      transparent 4px,
+      transparent 9px
+    );
+}
+
+.ticket-card > .flex.flex-col.items-center {
+  position: relative;
+  z-index: 1;
+  width: 224px;
+  flex: 0 0 224px;
+  background:
+    linear-gradient(
+      135deg,
+      rgba(255,255,255,0.18),
+      transparent 45%,
+      rgba(168,148,104,0.035)
+    ),
+    #e8e6df !important;
+  border-left: 0;
+}
+
+.ticket-card > .flex.flex-col.items-center::before {
+  content: "YOUR CHOICE";
+  position: absolute;
+  top: 17px;
+  left: 0;
+  right: 0;
+  text-align: center;
+  font-family: "IBM Plex Mono", monospace;
+  font-size: 8px;
+  letter-spacing: 2.2px;
+  color: rgba(78,85,93,0.7);
+}
+
+.ticket-card > .flex.flex-col.items-center > div:first-child {
+  margin-top: 14px;
+}
+
+.vote-button {
+  width: 76px !important;
+  height: 38px !important;
+  border: 1px solid rgba(16,20,25,0.22) !important;
+  border-radius: 1px !important;
+  background: rgba(243,241,234,0.72) !important;
+  color: #101419 !important;
+  box-shadow: none !important;
+  transition:
+    background 140ms ease,
+    border-color 140ms ease,
+    transform 140ms ease;
+}
+
+.vote-button:hover:not(:disabled) {
+  transform: translateY(-1px);
+  border-color: rgba(16,20,25,0.42) !important;
+}
+
+.vote-button.active.vote-oui {
+  background: #a71930 !important;
+  border-color: #a71930 !important;
+  color: #f3f1ea !important;
+}
+
+.vote-button.active.vote-non {
+  background: #4e555d !important;
+  border-color: #4e555d !important;
+  color: #f3f1ea !important;
+}
+
+.ticket-card .ticket-notch {
+  position: absolute;
+  left: 50%;
+  width: 14px;
+  height: 14px;
+  margin-left: -7px;
+  border-radius: 50%;
+  background: #f3f1ea;
+  box-shadow: 0 0 0 1px rgba(16,20,25,0.13);
+}
+
+.ticket-card .ticket-notch-top {
+  top: -7px;
+}
+
+.ticket-card .ticket-notch-bottom {
+  bottom: -7px;
+}
+
+.ticket-divider-mobile {
+  display: none;
+}
+
+@media (max-width: 760px) {
+  .ticket-card {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .ticket-card > .flex-1 {
+    padding: 25px 22px !important;
+  }
+
+  .ticket-card > .flex.flex-col.items-center {
+    width: 100%;
+    flex: none;
+    padding: 27px 20px 22px !important;
+  }
+
+  .ticket-card .ticket-divider-desktop {
+    display: none;
+  }
+
+  .ticket-divider-mobile {
+    display: block;
+    position: relative;
+    height: 1px;
+    margin: 0 18px;
+    background:
+      repeating-linear-gradient(
+        90deg,
+        rgba(16,20,25,0.25) 0px,
+        rgba(16,20,25,0.25) 4px,
+        transparent 4px,
+        transparent 9px
+      );
+  }
+
+  .ticket-card > .flex.flex-col.items-center::before {
+    top: 8px;
+  }
+
+  .ticket-card > .flex.flex-col.items-center > div:first-child {
+    margin-top: 8px;
+  }
+}
+
+/* === ROUTE PREMIUM DU BILLET === */
+
+.ticket-route-premium {
+  position: relative;
+  margin-top: 8px;
+  padding: 17px 0 13px;
+  border-top: 1px solid rgba(16,20,25,0.09);
+  border-bottom: 1px solid rgba(16,20,25,0.09);
+}
+
+.ticket-route-head {
+  display: grid;
+  grid-template-columns: 1fr auto 1fr;
+  align-items: center;
+  gap: 12px;
+  font-family: "IBM Plex Mono", monospace;
+  font-size: 10px;
+  font-weight: 500;
+  letter-spacing: 1.7px;
+  color: #101419;
+}
+
+.ticket-route-head > span:last-child {
+  text-align: right;
+}
+
+.ticket-route-date {
+  color: #a89468;
+  font-size: 8px;
+  letter-spacing: 1.3px;
+}
+
+.ticket-route-line {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  margin: 7px 0 2px;
+}
+
+.ticket-route-track {
+  height: 1px;
+  flex: 1;
+  background:
+    repeating-linear-gradient(
+      90deg,
+      rgba(16,20,25,0.35) 0,
+      rgba(16,20,25,0.35) 3px,
+      transparent 3px,
+      transparent 7px
+    );
+}
+
+.ticket-route-dot {
+  width: 6px;
+  height: 6px;
+  flex: 0 0 6px;
+  border-radius: 50%;
+  border: 1px solid #101419;
+  background: #f3f1ea;
+}
+
+.ticket-route-dot-end {
+  border-color: #a71930;
+  background: #a71930;
+}
+
+.ticket-route-codes {
+  display: flex;
+  justify-content: space-between;
+  font-family: "IBM Plex Mono", monospace;
+  font-size: 8px;
+  letter-spacing: 1px;
+  color: #4e555d;
+}
+
+.ticket-microprint {
+  margin-top: 11px;
+  overflow: hidden;
+  white-space: nowrap;
+  font-family: "IBM Plex Mono", monospace;
+  font-size: 6.5px;
+  letter-spacing: 1.4px;
+  color: rgba(78,85,93,0.42);
+  text-transform: uppercase;
+}
+
+@media (max-width: 760px) {
+  .ticket-route-premium {
+    margin-top: 12px;
+  }
+
+  .ticket-route-head {
+    font-size: 9px;
+  }
+
+  .ticket-route-date {
+    font-size: 7px;
+  }
+}
+
+/* === FILIGRANE / SÉCURITÉ DU BILLET === */
+
+.ticket-card::after {
+  content: "PARIS  •  LONDON  •  2028  •  EUROSTAR 9020  •  PARIS  •  LONDON";
+  position: absolute;
+  z-index: 0;
+  left: 4%;
+  right: 4%;
+  bottom: 13px;
+  overflow: hidden;
+  white-space: nowrap;
+  text-align: center;
+  font-family: "IBM Plex Mono", monospace;
+  font-size: 7px;
+  letter-spacing: 3px;
+  color: rgba(78,85,93,0.075);
+  pointer-events: none;
+}
+
+.ticket-card {
+  background-image:
+    radial-gradient(
+      ellipse at 78% 18%,
+      rgba(168,148,104,0.075) 0,
+      rgba(168,148,104,0.025) 18%,
+      transparent 42%
+    ),
+    radial-gradient(
+      ellipse at 15% 82%,
+      rgba(78,85,93,0.045) 0,
+      transparent 35%
+    ),
+    repeating-radial-gradient(
+      circle at 72% 35%,
+      transparent 0,
+      transparent 22px,
+      rgba(78,85,93,0.018) 23px,
+      transparent 24px
+    ) !important;
+}
+
+.ticket-card::before {
+  content: "";
+  position: absolute;
+  inset: 9px;
+  z-index: 0;
+  pointer-events: none;
+  border: 1px solid rgba(168,148,104,0.12);
+  background:
+    linear-gradient(
+      118deg,
+      transparent 0%,
+      transparent 37%,
+      rgba(78,85,93,0.025) 37.2%,
+      transparent 37.4%,
+      transparent 63%,
+      rgba(168,148,104,0.025) 63.2%,
+      transparent 63.4%
+    ),
+    repeating-linear-gradient(
+      35deg,
+      transparent 0,
+      transparent 17px,
+      rgba(168,148,104,0.015) 17px,
+      rgba(168,148,104,0.015) 18px
+    );
+}
+
+/* === EN-TÊTE PREMIUM DU BILLET === */
+
+.ticket-header-premium {
+  position: relative;
+}
+
+.ticket-header-top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 15px;
+  margin-bottom: 10px;
+  font-family: "IBM Plex Mono", monospace;
+  font-size: 7.5px;
+  font-weight: 500;
+  letter-spacing: 1.5px;
+  color: rgba(78,85,93,0.72);
+  text-transform: uppercase;
+}
+
+.ticket-header-top span:last-child {
+  color: rgba(167,25,48,0.78);
+}
+
+.ticket-header-rule {
+  height: 1px;
+  margin-bottom: 17px;
+  background:
+    repeating-linear-gradient(
+      90deg,
+      rgba(16,20,25,0.16) 0,
+      rgba(16,20,25,0.16) 5px,
+      transparent 5px,
+      transparent 8px
+    );
+}
+
+.ticket-header-bottom {
+  display: flex;
+  justify-content: space-between;
+  gap: 15px;
+  margin-top: 16px;
+  font-family: "IBM Plex Mono", monospace;
+  font-size: 7.5px;
+  letter-spacing: 1.2px;
+  color: rgba(78,85,93,0.58);
+}
+
+.ticket-header-bottom span:last-child {
+  color: rgba(168,148,104,0.9);
+}
+
+@media (max-width: 760px) {
+  .ticket-header-top {
+    font-size: 6.5px;
+    letter-spacing: 1px;
+  }
+
+  .ticket-header-bottom {
+    font-size: 6.5px;
+    letter-spacing: 0.8px;
+  }
+}
+
+/* === CHAPITRES DU DOSSIER === */
+
+.voyage-tabs {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 0;
+}
+
+.voyage-tab {
+  position: relative;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  min-height: 78px;
+  padding: 12px 18px 13px;
+  border: 0;
+  border-right: 1px solid rgba(243,241,234,0.07);
+  background: transparent;
+  color: #4e555d;
+  text-align: left;
+  cursor: pointer;
+}
+
+.voyage-tab:first-child {
+  border-left: 1px solid rgba(243,241,234,0.07);
+}
+
+.voyage-tab::after {
+  content: "";
+  position: absolute;
+  left: 18px;
+  right: 18px;
+  bottom: -1px;
+  height: 2px;
+  background: transparent;
+  transition: background 160ms ease;
+}
+
+.voyage-tab.active {
+  color: #f3f1ea;
+}
+
+.voyage-tab.active::after {
+  background: #a71930;
+}
+
+.voyage-tab-number {
+  align-self: flex-start;
+  padding-top: 2px;
+  font-family: "IBM Plex Mono", monospace;
+  font-size: 9px;
+  letter-spacing: 1px;
+  color: rgba(168,148,104,0.75);
+}
+
+.voyage-tab-content {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.voyage-tab-label {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-family: "Fraunces", Georgia, serif;
+  font-size: 17px;
+  font-weight: 600;
+  line-height: 1;
+}
+
+.voyage-tab-subtitle {
+  font-family: "IBM Plex Mono", monospace;
+  font-size: 7px;
+  letter-spacing: 1.3px;
+  color: rgba(78,85,93,0.8);
+  white-space: nowrap;
+}
+
+.voyage-tab.active .voyage-tab-subtitle {
+  color: rgba(243,241,234,0.48);
+}
+
+.voyage-tab:hover:not(.active) {
+  color: #c9ccd0;
+}
+
+@media (max-width: 760px) {
+  .voyage-tabs {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .voyage-tab {
+    min-height: 68px;
+    padding: 11px 13px;
+  }
+
+  .voyage-tab::after {
+    left: 13px;
+    right: 13px;
+  }
+
+  .voyage-tab-label {
+    font-size: 15px;
+  }
+
+  .voyage-tab-subtitle {
+    font-size: 6px;
+  }
+}
+
+/* === COUVERTURE DU DOSSIER === */
+
+.voyage-cover {
+  position: relative;
+  overflow: hidden;
+  border-bottom: 1px solid rgba(243,241,234,0.1);
+  background:
+    radial-gradient(circle at 78% 30%, rgba(168,148,104,0.06), transparent 24%),
+    radial-gradient(circle at 18% 80%, rgba(200,210,220,0.025), transparent 28%);
+}
+
+.voyage-cover::after {
+  content: "LONDON 2028";
+  position: absolute;
+  right: -20px;
+  bottom: -42px;
+  font-family: "Fraunces", Georgia, serif;
+  font-size: clamp(80px, 15vw, 180px);
+  font-weight: 700;
+  line-height: 1;
+  color: rgba(243,241,234,0.018);
+  pointer-events: none;
+}
+
+.voyage-cover-top {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 20px;
+}
+
+.voyage-kicker {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  font-family: "IBM Plex Mono", monospace;
+  font-size: 8px;
+  letter-spacing: 1.7px;
+  color: rgba(168,148,104,0.82);
+}
+
+.voyage-kicker-number {
+  color: rgba(243,241,234,0.38);
+  letter-spacing: 1px;
+}
+
+.voyage-admin-button {
+  border: 0;
+  background: transparent;
+  color: #4e555d;
+  font-family: "IBM Plex Mono", monospace;
+  font-size: 10px;
+  cursor: pointer;
+}
+
+.voyage-cover-main {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 35px;
+  margin-top: 42px;
+}
+
+.voyage-cover-title {
+  min-width: 0;
+}
+
+.voyage-cover-eyebrow {
+  margin-bottom: 9px;
+  font-family: "IBM Plex Mono", monospace;
+  font-size: 8px;
+  letter-spacing: 2.5px;
+  color: rgba(243,241,234,0.38);
+}
+
+.voyage-cover-title h1 {
+  margin: 0;
+  font-family: "Fraunces", Georgia, serif;
+  font-size: clamp(42px, 7vw, 76px);
+  font-weight: 600;
+  line-height: .98;
+  letter-spacing: -0.035em;
+  color: #f3f1ea;
+}
+
+.voyage-cover-title h1 span {
+  color: #a89468;
+  font-weight: 400;
+}
+
+.voyage-cover-subtitle {
+  margin-top: 14px;
+  font-family: "IBM Plex Mono", monospace;
+  font-size: 8px;
+  letter-spacing: 2px;
+  color: rgba(243,241,234,0.48);
+}
+
+.voyage-seal {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 76px;
+  height: 76px;
+  flex: 0 0 76px;
+  border: 1px solid rgba(168,148,104,0.45);
+  border-radius: 50%;
+  color: rgba(168,148,104,0.85);
+  transform: rotate(-8deg);
+}
+
+.voyage-seal span {
+  font-family: "Fraunces", Georgia, serif;
+  font-size: 25px;
+  line-height: 1;
+}
+
+.voyage-seal small {
+  margin-top: 4px;
+  font-family: "IBM Plex Mono", monospace;
+  font-size: 7px;
+  letter-spacing: 1.5px;
+}
+
+.voyage-cover-route {
+  flex: 0 0 230px;
+}
+
+.voyage-cover-info {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin-top: 35px;
+  padding-top: 14px;
+  border-top: 1px solid rgba(243,241,234,0.1);
+  font-family: "IBM Plex Mono", monospace;
+  font-size: 8px;
+  letter-spacing: 1.4px;
+  color: rgba(243,241,234,0.55);
+}
+
+.voyage-cover-info i {
+  width: 3px;
+  height: 3px;
+  border-radius: 50%;
+  background: rgba(168,148,104,0.55);
+}
+
+@media (max-width: 760px) {
+  .voyage-cover-main {
+    align-items: center;
+    margin-top: 34px;
+  }
+
+  .voyage-seal {
+    width: 58px;
+    height: 58px;
+    flex-basis: 58px;
+  }
+
+  .voyage-seal span {
+    font-size: 20px;
+  }
+
+  .voyage-cover-subtitle {
+    font-size: 7px;
+    letter-spacing: 1.3px;
+  }
+
+  .voyage-cover-info {
+    gap: 8px;
+    font-size: 7px;
+  }
+}
+
+/* === FILIGRANES PAR CHAPITRE === */
+
+.ticket-watermark {
+  position: absolute;
+  z-index: 0;
+  right: 7%;
+  top: 14%;
+  width: 250px;
+  height: 170px;
+  pointer-events: none;
+  opacity: 0.55;
+  border: 1px solid rgba(78,85,93,0.035);
+  border-radius: 50%;
+  transform: rotate(-8deg);
+}
+
+.ticket-watermark::before,
+.ticket-watermark::after {
+  content: "";
+  position: absolute;
+  inset: 12px;
+  border: 1px solid rgba(168,148,104,0.035);
+  border-radius: 50%;
+}
+
+.ticket-watermark::after {
+  inset: 28px;
+  border-style: dashed;
+  border-color: rgba(78,85,93,0.035);
+}
+
+/* Hébergement — façade / fenêtres */
+.ticket-category-hebergement .ticket-watermark {
+  background:
+    repeating-linear-gradient(
+      90deg,
+      transparent 0,
+      transparent 18px,
+      rgba(78,85,93,0.025) 18px,
+      rgba(78,85,93,0.025) 19px
+    ),
+    repeating-linear-gradient(
+      0deg,
+      transparent 0,
+      transparent 25px,
+      rgba(78,85,93,0.022) 25px,
+      rgba(78,85,93,0.022) 26px
+    );
+}
+
+/* Repas — motif guilloché */
+.ticket-category-repas .ticket-watermark {
+  border-radius: 8px;
+  background:
+    repeating-radial-gradient(
+      ellipse at center,
+      transparent 0,
+      transparent 9px,
+      rgba(168,148,104,0.025) 10px,
+      transparent 11px
+    );
+}
+
+/* Activités — architecture / monument */
+.ticket-category-activites .ticket-watermark {
+  clip-path: polygon(
+    8% 100%,
+    8% 52%,
+    22% 52%,
+    22% 35%,
+    31% 35%,
+    31% 48%,
+    42% 48%,
+    42% 20%,
+    50% 7%,
+    58% 20%,
+    58% 48%,
+    69% 48%,
+    69% 35%,
+    78% 35%,
+    78% 52%,
+    92% 52%,
+    92% 100%
+  );
+  border-radius: 0;
+  border-top: 1px solid rgba(78,85,93,0.025);
+}
+
+/* Dossier — carte / réseau */
+.ticket-category-dossier .ticket-watermark {
+  border-radius: 0;
+  transform: rotate(-12deg);
+  background:
+    linear-gradient(
+      35deg,
+      transparent 0 28%,
+      rgba(78,85,93,0.025) 28.5%,
+      transparent 29%
+    ),
+    linear-gradient(
+      145deg,
+      transparent 0 62%,
+      rgba(168,148,104,0.025) 62.5%,
+      transparent 63%
+    ),
+    repeating-linear-gradient(
+      90deg,
+      transparent 0,
+      transparent 31px,
+      rgba(78,85,93,0.018) 31px,
+      rgba(78,85,93,0.018) 32px
+    );
+}
+
+@media (max-width: 760px) {
+  .ticket-watermark {
+    right: 2%;
+    top: 18%;
+    width: 190px;
+    height: 130px;
+    opacity: 0.42;
+  }
+}
+
+/* === SÉLECTION PREMIUM — YOUR CHOICE === */
+
+.ticket-card .vote-button {
+  position: relative;
+  overflow: hidden;
+  font-family: "IBM Plex Mono", monospace !important;
+  font-size: 9px !important;
+  font-weight: 500 !important;
+  letter-spacing: 1.2px !important;
+  text-transform: uppercase;
+}
+
+.ticket-card .vote-button::before {
+  content: "";
+  position: absolute;
+  inset: 3px;
+  border: 1px solid rgba(16,20,25,0.08);
+  pointer-events: none;
+}
+
+.ticket-card .vote-button.active::after {
+  content: "✓";
+  position: absolute;
+  top: 3px;
+  right: 5px;
+  font-size: 8px;
+  line-height: 1;
+}
+
+.ticket-card .vote-button.active.vote-oui {
+  letter-spacing: 1.4px !important;
+}
+
+.ticket-card .vote-button.active.vote-non {
+  letter-spacing: 1.4px !important;
+}
+
+.ticket-card .vote-button:disabled {
+  cursor: not-allowed;
+  opacity: 0.42 !important;
+}
+
+@media (max-width: 760px) {
+  .ticket-card .vote-button {
+    width: 86px !important;
+    height: 40px !important;
+  }
+}
+
+/* === TIMELINE DU VOYAGE === */
+
+.voyage-timeline {
+  position: relative;
+  padding-top: 18px;
+  padding-bottom: 20px;
+  background:
+    linear-gradient(
+      90deg,
+      transparent,
+      rgba(168,148,104,0.025),
+      transparent
+    );
+}
+
+.voyage-timeline-heading {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 16px;
+  font-family: "IBM Plex Mono", monospace;
+  font-size: 7px;
+  letter-spacing: 1.8px;
+  color: rgba(243,241,234,0.34);
+}
+
+.voyage-timeline-heading span:last-child {
+  color: rgba(168,148,104,0.62);
+}
+
+.voyage-timeline-track {
+  position: relative;
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 0;
+}
+
+.voyage-timeline-track::before {
+  content: "";
+  position: absolute;
+  top: 4px;
+  left: 4%;
+  right: 4%;
+  height: 1px;
+  background:
+    repeating-linear-gradient(
+      90deg,
+      rgba(243,241,234,0.2) 0,
+      rgba(243,241,234,0.2) 3px,
+      transparent 3px,
+      transparent 8px
+    );
+}
+
+.voyage-timeline-day {
+  position: relative;
+  min-width: 0;
+  padding-right: 15px;
+}
+
+.voyage-timeline-marker {
+  position: relative;
+  z-index: 1;
+  width: 9px;
+  height: 9px;
+  margin-bottom: 10px;
+  border: 1px solid rgba(243,241,234,0.42);
+  border-radius: 50%;
+  background: #101419;
+}
+
+.voyage-timeline-marker span {
+  display: block;
+  width: 3px;
+  height: 3px;
+  margin: 2px;
+  border-radius: 50%;
+  background: rgba(168,148,104,0.7);
+}
+
+.voyage-timeline-day.terminal .voyage-timeline-marker {
+  border-color: #a71930;
+}
+
+.voyage-timeline-day.terminal:last-child .voyage-timeline-marker {
+  background: #a71930;
+}
+
+.voyage-timeline-date {
+  margin-bottom: 5px;
+  font-family: "IBM Plex Mono", monospace;
+  font-size: 7px;
+  letter-spacing: 1.4px;
+  color: rgba(168,148,104,0.72);
+}
+
+.voyage-timeline-title {
+  margin-bottom: 4px;
+  font-family: "Fraunces", Georgia, serif;
+  font-size: 14px;
+  font-weight: 600;
+  color: rgba(243,241,234,0.88);
+}
+
+.voyage-timeline-detail {
+  max-width: 150px;
+  font-family: "IBM Plex Mono", monospace;
+  font-size: 7px;
+  line-height: 1.55;
+  color: rgba(243,241,234,0.34);
+}
+
+@media (max-width: 760px) {
+  .voyage-timeline {
+    padding-top: 15px;
+    padding-bottom: 17px;
+  }
+
+  .voyage-timeline-track {
+    grid-template-columns: repeat(5, minmax(105px, 1fr));
+    overflow-x: auto;
+    padding-bottom: 5px;
+    scrollbar-width: none;
+  }
+
+  .voyage-timeline-track::-webkit-scrollbar {
+    display: none;
+  }
+
+  .voyage-timeline-track::before {
+    left: 4px;
+    right: 4px;
+  }
+
+  .voyage-timeline-day {
+    padding-right: 18px;
+  }
+}
+
+/* =========================================================
+   VOYAGE LONDRES — BILLET / VERSION ÉDITION PREMIUM
+   ========================================================= */
+
+.ticket-card {
+  position: relative !important;
+  isolation: isolate;
+  border: 1px solid rgba(15, 19, 24, .16) !important;
+  border-radius: 2px !important;
+  overflow: hidden !important;
+
+  background:
+    radial-gradient(
+      ellipse at 82% 35%,
+      rgba(168, 148, 104, .075),
+      transparent 30%
+    ),
+    radial-gradient(
+      ellipse at 20% 80%,
+      rgba(90, 98, 108, .045),
+      transparent 32%
+    ),
+    repeating-linear-gradient(
+      0deg,
+      rgba(30, 35, 40, .012) 0,
+      rgba(30, 35, 40, .012) 1px,
+      transparent 1px,
+      transparent 4px
+    ),
+    #f3f1ea !important;
+
+  box-shadow:
+    0 2px 0 rgba(255,255,255,.65) inset,
+    0 22px 45px rgba(0,0,0,.16),
+    4px 4px 0 rgba(8,12,17,.07) !important;
+
+  transform: translateZ(0);
+}
+
+/* Double cadre intérieur, comme une impression de sécurité */
+
+.ticket-card::before {
+  content: "";
+  position: absolute;
+  z-index: 0;
+  inset: 13px;
+  border: 1px solid rgba(78, 85, 93, .075);
+  pointer-events: none;
+}
+
+/* Guilloché très discret */
+
+.ticket-card::after {
+  content: "";
+  position: absolute;
+  z-index: 0;
+  inset: 17px;
+  background:
+    repeating-radial-gradient(
+      ellipse at center,
+      transparent 0 15px,
+      rgba(78,85,93,.018) 15.5px 16px,
+      transparent 16.5px 24px
+    );
+  opacity: .7;
+  pointer-events: none;
+  mask-image: linear-gradient(
+    90deg,
+    transparent,
+    black 18%,
+    black 82%,
+    transparent
+  );
+}
+
+/* Contenu au-dessus du papier */
+
+.ticket-card > * {
+  position: relative;
+  z-index: 2;
+}
+
+/* ---------- En-tête ---------- */
+
+.ticket-header-premium {
+  position: relative;
+  padding-bottom: 17px;
+  border-bottom: 1px solid rgba(16,20,25,.11);
+}
+
+.ticket-header-top {
+  margin-bottom: 14px !important;
+  opacity: .7;
+}
+
+.ticket-header-top span:first-child {
+  font-size: 7px !important;
+  letter-spacing: 2.2px !important;
+  color: #4e555d !important;
+}
+
+.ticket-header-top span:last-child {
+  font-size: 7px !important;
+  letter-spacing: 2px !important;
+  color: #a89468 !important;
+}
+
+/* Nom de l'option */
+
+.ticket-card h3 {
+  font-size: clamp(22px, 3vw, 27px) !important;
+  line-height: 1.05 !important;
+  letter-spacing: -.035em !important;
+}
+
+/* Localisation */
+
+.ticket-card h3 + div {
+  font-size: 8px !important;
+  letter-spacing: 1px !important;
+  text-transform: uppercase;
+}
+
+/* ---------- Route centrale ---------- */
+
+.ticket-route-premium {
+  margin-top: 22px !important;
+  padding: 18px 4px 14px !important;
+  border-top: 0 !important;
+  border-bottom: 0 !important;
+}
+
+/* ligne horizontale propre */
+
+.ticket-route-line {
+  position: relative;
+  display: flex !important;
+  align-items: center !important;
+  gap: 8px !important;
+  height: 12px;
+  margin: 8px 0 7px !important;
+}
+
+.ticket-route-track {
+  height: 1px !important;
+  background:
+    repeating-linear-gradient(
+      90deg,
+      rgba(16,20,25,.40) 0 7px,
+      transparent 7px 11px
+    ) !important;
+}
+
+.ticket-route-dot {
+  position: relative;
+  width: 9px !important;
+  height: 9px !important;
+  flex: 0 0 9px !important;
+  border: 1px solid #20262d !important;
+  background: #f3f1ea !important;
+}
+
+.ticket-route-dot-end {
+  border-color: #a71930 !important;
+  background: #a71930 !important;
+}
+
+.ticket-route-head {
+  font-size: 10px !important;
+  letter-spacing: 2.5px !important;
+}
+
+.ticket-route-date {
+  font-size: 7px !important;
+  letter-spacing: 1.5px !important;
+  color: #a89468 !important;
+}
+
+/* ---------- Micro-impression ---------- */
+
+.ticket-microprint {
+  opacity: .55;
+  font-size: 5px !important;
+  letter-spacing: 2px !important;
+}
+
+/* ---------- Séparateur central ---------- */
+
+.ticket-divider-desktop {
+  position: relative !important;
+  width: 1px !important;
+  min-width: 1px !important;
+  margin: 20px 0 !important;
+  background:
+    repeating-linear-gradient(
+      to bottom,
+      rgba(16,20,25,.27) 0 4px,
+      transparent 4px 9px
+    ) !important;
+}
+
+/* Perforations haut/bas */
+
+.ticket-divider-desktop::before,
+.ticket-divider-desktop::after {
+  content: "";
+  position: absolute;
+  left: 50%;
+  width: 15px;
+  height: 15px;
+  margin-left: -7.5px;
+  border-radius: 50%;
+  background: #0c1015;
+}
+
+.ticket-divider-desktop::before {
+  top: -28px;
+}
+
+.ticket-divider-desktop::after {
+  bottom: -28px;
+}
+
+/* ---------- Zone de choix ---------- */
+
+.ticket-card > .flex.flex-col.items-center {
+  background:
+    linear-gradient(
+      135deg,
+      rgba(255,255,255,.35),
+      transparent 55%
+    ),
+    #e6e4dd !important;
+
+  border-left: 0 !important;
+}
+
+.ticket-card > .flex.flex-col.items-center::after {
+  content: "VL / 2028";
+  position: absolute;
+  right: 16px;
+  bottom: 12px;
+  font-family: "IBM Plex Mono", monospace;
+  font-size: 5px;
+  letter-spacing: 1.5px;
+  color: rgba(78,85,93,.28);
+}
+
+.ticket-card > .flex.flex-col.items-center > div:first-child {
+  font-family: "IBM Plex Mono", monospace;
+  font-size: 7px !important;
+  letter-spacing: 2px !important;
+  text-transform: uppercase;
+  color: #727983 !important;
+}
+
+/* ---------- Boutons ---------- */
+
+.vote-button {
+  border-radius: 1px !important;
+  letter-spacing: 1.7px !important;
+  transition:
+    transform .18s ease,
+    background .18s ease,
+    border-color .18s ease !important;
+}
+
+.vote-button:hover:not(:disabled) {
+  transform: translateY(-2px) !important;
+}
+
+.vote-button.active.vote-oui {
+  background: #a71930 !important;
+  border-color: #a71930 !important;
+  box-shadow: 0 5px 12px rgba(167,25,48,.18) !important;
+}
+
+/* ---------- Mobile ---------- */
+
+@media (max-width: 767px) {
+
+  .ticket-card {
+    box-shadow:
+      0 12px 30px rgba(0,0,0,.13),
+      3px 3px 0 rgba(8,12,17,.06) !important;
+  }
+
+  .ticket-card::before {
+    inset: 9px;
+  }
+
+  .ticket-card::after {
+    inset: 12px;
+  }
+
+  .ticket-card > .flex.flex-col.items-center {
+    border-top: 1px solid rgba(16,20,25,.10) !important;
+  }
+
+  .ticket-divider-mobile {
+    width: 100% !important;
+    height: 1px !important;
+    margin: 0 !important;
+    background:
+      repeating-linear-gradient(
+        90deg,
+        rgba(16,20,25,.27) 0 5px,
+        transparent 5px 10px
+      ) !important;
+  }
+
+  .ticket-header-bottom {
+    font-size: 6px !important;
+  }
+
+  .ticket-route-head {
+    font-size: 8px !important;
+  }
+}
+
+
+/* =========================================================
+   VOYAGE LONDRES — TICKET MASTER / FINAL VISUAL LAYER
+   ========================================================= */
+
+.ticket-card {
+  position: relative !important;
+  isolation: isolate;
+  overflow: hidden !important;
+  min-height: 300px !important;
+  border: 1px solid rgba(16, 20, 25, 0.20) !important;
+  border-radius: 3px !important;
+
+  background:
+    radial-gradient(
+      ellipse at 18% 18%,
+      rgba(168, 148, 104, 0.09),
+      transparent 32%
+    ),
+    radial-gradient(
+      ellipse at 82% 82%,
+      rgba(90, 100, 110, 0.06),
+      transparent 34%
+    ),
+    repeating-linear-gradient(
+      0deg,
+      rgba(16, 20, 25, 0.018) 0,
+      rgba(16, 20, 25, 0.018) 1px,
+      transparent 1px,
+      transparent 5px
+    ),
+    #f3f1ea !important;
+
+  box-shadow:
+    0 1px 0 rgba(255,255,255,0.85) inset,
+    0 16px 34px rgba(16,20,25,0.12),
+    4px 5px 0 rgba(16,20,25,0.045) !important;
+}
+
+/* Cadre intérieur du billet */
+.ticket-card::before {
+  content: "";
+  position: absolute;
+  inset: 11px;
+  z-index: 0;
+  pointer-events: none;
+
+  border: 1px solid rgba(16,20,25,0.075);
+
+  background:
+    repeating-radial-gradient(
+      ellipse at 50% 50%,
+      transparent 0,
+      transparent 17px,
+      rgba(16,20,25,0.018) 17.5px,
+      transparent 18.5px
+    );
+
+  opacity: 0.8;
+}
+
+/* Motif de sécurité / filigrane */
+.ticket-card::after {
+  content: "PARIS  ·  LONDON  ·  2028  ·  EUROSTAR 9020";
+  position: absolute;
+  left: 7%;
+  right: 7%;
+  bottom: 18px;
+  z-index: 0;
+  pointer-events: none;
+
+  text-align: center;
+  white-space: nowrap;
+
+  font-family: "IBM Plex Mono", monospace;
+  font-size: 6px;
+  letter-spacing: 4px;
+  color: rgba(16,20,25,0.045);
+
+  transform: rotate(-2deg);
+}
+
+/* Tout le contenu reste au-dessus des motifs */
+.ticket-card > * {
+  position: relative;
+  z-index: 2;
+}
+
+/* ---------------------------------------------------------
+   CORPS PRINCIPAL
+   --------------------------------------------------------- */
+
+.ticket-card > .flex-1 {
+  padding: 28px 31px !important;
+}
+
+/* En-tête */
+.ticket-header-premium {
+  padding-bottom: 15px !important;
+  border-bottom: 1px solid rgba(16,20,25,0.10);
+}
+
+.ticket-header-top {
+  align-items: center;
+  font-family: "IBM Plex Mono", monospace !important;
+  font-size: 7px !important;
+  letter-spacing: 1.8px !important;
+  color: rgba(78,85,93,0.68) !important;
+}
+
+.ticket-header-top span:last-child {
+  color: rgba(167,25,48,0.78) !important;
+}
+
+/* Ligne de sécurité */
+.ticket-header-rule {
+  height: 2px !important;
+  margin: 9px 0 18px !important;
+
+  background:
+    repeating-linear-gradient(
+      90deg,
+      rgba(16,20,25,0.22) 0,
+      rgba(16,20,25,0.22) 3px,
+      transparent 3px,
+      transparent 6px
+    ) !important;
+}
+
+/* Nom de l'option */
+.ticket-card h3 {
+  position: relative;
+  font-size: clamp(21px, 3vw, 27px) !important;
+  letter-spacing: -0.02em !important;
+  line-height: 1.08 !important;
+}
+
+/* Localisation */
+.ticket-card h3 + div {
+  font-size: 8px !important;
+  letter-spacing: 1.1px !important;
+}
+
+/* ---------------------------------------------------------
+   ROUTE PARIS → LONDON
+   --------------------------------------------------------- */
+
+.ticket-route-premium {
+  position: relative;
+  margin-top: 22px !important;
+  padding: 18px 3px 14px !important;
+
+  border-top: 1px solid rgba(16,20,25,0.075) !important;
+  border-bottom: 1px solid rgba(16,20,25,0.075) !important;
+}
+
+.ticket-route-head {
+  display: grid !important;
+  grid-template-columns: 1fr auto 1fr !important;
+  align-items: center;
+
+  font-family: "IBM Plex Mono", monospace !important;
+  font-size: 10px !important;
+  font-weight: 500 !important;
+  letter-spacing: 2.8px !important;
+  color: #101419 !important;
+}
+
+.ticket-route-head > span:last-child {
+  text-align: right;
+}
+
+.ticket-route-date {
+  font-size: 6.5px !important;
+  letter-spacing: 1.4px !important;
+  color: #a89468 !important;
+}
+
+/* La ligne reste impérativement horizontale */
+.ticket-route-line {
+  display: flex !important;
+  align-items: center !important;
+  gap: 8px !important;
+  margin: 9px 0 3px !important;
+}
+
+.ticket-route-track {
+  flex: 1 !important;
+  height: 1px !important;
+
+  background:
+    repeating-linear-gradient(
+      90deg,
+      rgba(16,20,25,0.35) 0,
+      rgba(16,20,25,0.35) 5px,
+      transparent 5px,
+      transparent 9px
+    ) !important;
+}
+
+.ticket-route-dot {
+  width: 7px !important;
+  height: 7px !important;
+  flex: 0 0 7px !important;
+
+  border: 1px solid #101419 !important;
+  border-radius: 50% !important;
+  background: #f3f1ea !important;
+}
+
+.ticket-route-dot-end {
+  border-color: #a71930 !important;
+  background: #a71930 !important;
+}
+
+.ticket-route-codes {
+  display: flex !important;
+  justify-content: space-between !important;
+
+  font-family: "IBM Plex Mono", monospace !important;
+  font-size: 6.5px !important;
+  letter-spacing: 1.5px !important;
+  color: rgba(78,85,93,0.65) !important;
+}
+
+.ticket-microprint {
+  margin-top: 11px !important;
+
+  font-family: "IBM Plex Mono", monospace !important;
+  font-size: 5px !important;
+  letter-spacing: 1.7px !important;
+  text-align: center;
+
+  color: rgba(16,20,25,0.34) !important;
+}
+
+/* ---------------------------------------------------------
+   PERFORATION CENTRALE
+   --------------------------------------------------------- */
+
+.ticket-card .ticket-divider-desktop {
+  position: relative !important;
+  width: 1px !important;
+  flex: 0 0 1px !important;
+  margin: 22px 0 !important;
+
+  background:
+    repeating-linear-gradient(
+      to bottom,
+      rgba(16,20,25,0.27) 0,
+      rgba(16,20,25,0.27) 4px,
+      transparent 4px,
+      transparent 9px
+    ) !important;
+}
+
+.ticket-card .ticket-notch {
+  width: 15px !important;
+  height: 15px !important;
+  margin-left: -7px !important;
+
+  border-radius: 50% !important;
+  background: #f3f1ea !important;
+
+  box-shadow:
+    0 0 0 1px rgba(16,20,25,0.12),
+    0 0 0 3px rgba(243,241,234,0.9) !important;
+}
+
+.ticket-card .ticket-notch-top {
+  top: -7.5px !important;
+}
+
+.ticket-card .ticket-notch-bottom {
+  bottom: -7.5px !important;
+}
+
+/* ---------------------------------------------------------
+   ZONE YOUR CHOICE
+   --------------------------------------------------------- */
+
+.ticket-card > .flex.flex-col.items-center {
+  width: 215px !important;
+  flex: 0 0 215px !important;
+
+  background:
+    linear-gradient(
+      135deg,
+      rgba(255,255,255,0.30),
+      transparent 42%,
+      rgba(168,148,104,0.045)
+    ),
+    #e8e6df !important;
+
+  border-left: 0 !important;
+}
+
+.ticket-card > .flex.flex-col.items-center::before {
+  content: "YOUR CHOICE" !important;
+
+  top: 18px !important;
+
+  font-family: "IBM Plex Mono", monospace !important;
+  font-size: 7px !important;
+  letter-spacing: 2.8px !important;
+
+  color: rgba(78,85,93,0.58) !important;
+}
+
+.ticket-card > .flex.flex-col.items-center > div:first-child {
+  margin-top: 15px !important;
+}
+
+.ticket-card > .flex.flex-col.items-center > div:first-child div:first-child {
+  font-size: 20px !important;
+}
+
+/* Boutons */
+.ticket-card .vote-button {
+  width: 73px !important;
+  height: 36px !important;
+
+  border: 1px solid rgba(16,20,25,0.20) !important;
+  border-radius: 2px !important;
+
+  background: rgba(243,241,234,0.78) !important;
+  color: #101419 !important;
+
+  box-shadow: none !important;
+}
+
+.ticket-card .vote-button:hover:not(:disabled) {
+  transform: translateY(-1px);
+  border-color: rgba(16,20,25,0.45) !important;
+}
+
+.ticket-card .vote-button.active.vote-oui {
+  background: #a71930 !important;
+  border-color: #a71930 !important;
+  color: #f3f1ea !important;
+}
+
+.ticket-card .vote-button.active.vote-non {
+  background: #4e555d !important;
+  border-color: #4e555d !important;
+  color: #f3f1ea !important;
+}
+
+/* ---------------------------------------------------------
+   MOBILE
+   --------------------------------------------------------- */
+
+@media (max-width: 760px) {
+
+  .ticket-card {
+    display: flex !important;
+    flex-direction: column !important;
+  }
+
+  .ticket-card > .flex-1 {
+    padding: 25px 21px !important;
+  }
+
+  .ticket-card > .flex.flex-col.items-center {
+    width: 100% !important;
+    flex: none !important;
+    padding: 28px 20px 22px !important;
+  }
+
+  .ticket-card .ticket-divider-desktop {
+    display: none !important;
+  }
+
+  .ticket-divider-mobile {
+    display: block !important;
+    position: relative !important;
+    height: 1px !important;
+    margin: 0 18px !important;
+
+    background:
+      repeating-linear-gradient(
+        90deg,
+        rgba(16,20,25,0.27) 0,
+        rgba(16,20,25,0.27) 4px,
+        transparent 4px,
+        transparent 9px
+      ) !important;
+  }
+
+  .ticket-card > .flex.flex-col.items-center::before {
+    top: 9px !important;
+  }
+
+  .ticket-card > .flex.flex-col.items-center > div:first-child {
+    margin-top: 9px !important;
+  }
+
+  .ticket-route-head {
+    font-size: 8px !important;
+    letter-spacing: 2px !important;
+  }
+
+  .ticket-route-date {
+    font-size: 5.5px !important;
+  }
+
+  .ticket-microprint {
+    font-size: 4.5px !important;
+    letter-spacing: 1px !important;
+  }
+}
+
+/* =========================================================
+   TICKET GRAPHIC — BILLET DE VOYAGE
+   ========================================================= */
+
+.ticket-card {
+  position: relative !important;
+  display: flex !important;
+  min-height: 310px !important;
+  overflow: hidden !important;
+  isolation: isolate;
+
+  background:
+    linear-gradient(115deg, rgba(255,255,255,.5), transparent 38%),
+    radial-gradient(circle at 15% 30%, rgba(167,25,48,.035), transparent 25%),
+    radial-gradient(circle at 82% 70%, rgba(80,90,100,.055), transparent 30%),
+    #f3f1ea !important;
+
+  border: 1px solid rgba(16,20,25,.22) !important;
+  border-radius: 4px !important;
+
+  box-shadow:
+    0 20px 45px rgba(16,20,25,.13),
+    4px 5px 0 rgba(16,20,25,.045) !important;
+}
+
+/* Cadre */
+.ticket-inner-border {
+  position: absolute;
+  inset: 10px;
+  z-index: 1;
+  pointer-events: none;
+
+  border: 1px solid rgba(16,20,25,.10);
+}
+
+/* Gravure architecturale */
+.ticket-engraving {
+  position: absolute;
+  right: 185px;
+  bottom: -90px;
+  width: 330px;
+  height: 330px;
+  z-index: 0;
+  pointer-events: none;
+  opacity: .20;
+}
+
+.ticket-engraving-circle {
+  position: absolute;
+  border: 1px solid rgba(16,20,25,.20);
+  border-radius: 50%;
+}
+
+.ticket-engraving-circle-a {
+  inset: 15px;
+}
+
+.ticket-engraving-circle-b {
+  inset: 43px;
+}
+
+.ticket-engraving-lines {
+  position: absolute;
+  inset: 75px;
+
+  border-radius: 50%;
+
+  background:
+    repeating-radial-gradient(
+      circle,
+      transparent 0,
+      transparent 7px,
+      rgba(16,20,25,.13) 8px,
+      transparent 9px
+    );
+}
+
+.ticket-engraving-arch {
+  position: absolute;
+
+  font-family: "IBM Plex Mono", monospace;
+  font-size: 42px;
+  font-weight: 600;
+  letter-spacing: 7px;
+
+  color: rgba(16,20,25,.08);
+
+  transform: rotate(-15deg);
+}
+
+.ticket-engraving-arch-paris {
+  top: 90px;
+  left: 50px;
+}
+
+.ticket-engraving-arch-london {
+  top: 145px;
+  left: 85px;
+  font-size: 31px;
+}
+
+/* Corps */
+.ticket-main {
+  position: relative;
+  z-index: 3;
+
+  flex: 1;
+  min-width: 0;
+
+  padding: 30px 34px 27px !important;
+}
+
+/* Header */
+.ticket-header-premium {
+  border-bottom: 0 !important;
+  padding: 0 !important;
+}
+
+.ticket-header-top {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  font-family: "IBM Plex Mono", monospace;
+  font-size: 7px !important;
+  letter-spacing: 2.4px !important;
+  color: rgba(16,20,25,.55) !important;
+}
+
+.ticket-header-top span:last-child {
+  color: #a71930 !important;
+}
+
+/* Ligne de sécurité */
+.ticket-security-line {
+  display: flex;
+  gap: 3px;
+
+  margin: 10px 0 19px;
+
+  height: 2px;
+  overflow: hidden;
+}
+
+.ticket-security-line span {
+  flex: 1;
+  height: 1px;
+  margin-top: 1px;
+
+  background: rgba(16,20,25,.20);
+}
+
+.ticket-security-line span:nth-child(3n) {
+  background: #a71930;
+  opacity: .55;
+}
+
+/* Titre */
+.ticket-title-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 20px;
+}
+
+.ticket-card h3 {
+  margin: 0 !important;
+
+  font-family: "Fraunces", Georgia, serif !important;
+  font-size: clamp(23px, 3vw, 30px) !important;
+  font-weight: 600 !important;
+  line-height: 1.05 !important;
+  letter-spacing: -.025em !important;
+
+  color: #101419 !important;
+}
+
+.ticket-location {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+
+  margin-top: 8px;
+
+  font-family: "IBM Plex Mono", monospace;
+  font-size: 8px;
+  letter-spacing: 1.2px;
+
+  color: rgba(78,85,93,.72);
+}
+
+.ticket-proposal {
+  flex-shrink: 0;
+
+  padding: 6px 8px;
+
+  border: 1px solid rgba(167,25,48,.45);
+
+  font-family: "IBM Plex Mono", monospace;
+  font-size: 7px;
+  letter-spacing: 1.5px;
+
+  color: #a71930;
+}
+
+/* =========================================================
+   ROUTE
+   ========================================================= */
+
+.ticket-route-graphic {
+  position: relative;
+  z-index: 3;
+
+  margin-top: 26px;
+  padding: 15px 0 13px;
+
+  border-top: 1px solid rgba(16,20,25,.09);
+  border-bottom: 1px solid rgba(16,20,25,.09);
+}
+
+.ticket-route-label {
+  display: grid;
+  grid-template-columns: 1fr 2fr 1fr;
+  align-items: center;
+  gap: 14px;
+
+  font-family: "IBM Plex Mono", monospace;
+  font-size: 10px;
+  font-weight: 500;
+  letter-spacing: 2.8px;
+
+  color: #101419;
+}
+
+.ticket-route-label > span:last-child {
+  text-align: right;
+}
+
+.ticket-route-center {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+
+  font-size: 6px;
+  letter-spacing: 1px;
+
+  color: rgba(78,85,93,.65);
+}
+
+.ticket-route-line {
+  display: flex;
+  align-items: center;
+  flex: 1;
+  gap: 4px;
+}
+
+.ticket-route-line::before,
+.ticket-route-line::after {
+  content: "";
+  height: 1px;
+  flex: 1;
+
+  background:
+    repeating-linear-gradient(
+      90deg,
+      rgba(16,20,25,.35) 0 5px,
+      transparent 5px 9px
+    );
+}
+
+.ticket-route-line b {
+  width: 7px;
+  height: 7px;
+
+  border-radius: 50%;
+  border: 1px solid #a71930;
+
+  background: #a71930;
+}
+
+.ticket-route-line i {
+  display: none;
+}
+
+.ticket-route-date {
+  margin-top: 8px;
+
+  text-align: center;
+
+  font-family: "IBM Plex Mono", monospace;
+  font-size: 6px;
+  letter-spacing: 2px;
+
+  color: rgba(78,85,93,.55);
+}
+
+/* =========================================================
+   VRAI SCEAU GRAPHIQUE
+   ========================================================= */
+
+.ticket-stamp {
+  position: absolute;
+  right: 38px;
+  top: 125px;
+
+  width: 82px;
+  height: 82px;
+
+  z-index: 4;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+
+  border: 1px solid rgba(167,25,48,.52);
+  border-radius: 50%;
+
+  outline: 1px solid rgba(167,25,48,.25);
+  outline-offset: -6px;
+
+  transform: rotate(-12deg);
+
+  font-family: "IBM Plex Mono", monospace;
+  color: rgba(167,25,48,.72);
+
+  background: rgba(243,241,234,.38);
+}
+
+.ticket-stamp::before,
+.ticket-stamp::after {
+  content: "✦";
+  position: absolute;
+  font-size: 8px;
+}
+
+.ticket-stamp::before {
+  top: 11px;
+}
+
+.ticket-stamp::after {
+  bottom: 11px;
+}
+
+.ticket-stamp span {
+  font-size: 6px;
+  letter-spacing: 1.4px;
+}
+
+.ticket-stamp strong {
+  margin: 1px 0;
+
+  font-family: Georgia, serif;
+  font-size: 16px;
+  font-weight: 400;
+}
+
+.ticket-stamp small {
+  font-size: 6px;
+  letter-spacing: 2px;
+}
+
+/* Description */
+.ticket-description {
+  position: relative;
+  z-index: 3;
+
+  max-width: 65ch;
+  margin-top: 18px;
+}
+
+.ticket-description p {
+  margin: 0 !important;
+
+  font-size: 13.5px !important;
+  line-height: 1.55 !important;
+
+  color: rgba(16,20,25,.78) !important;
+}
+
+.ticket-read-more {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+
+  margin-top: 8px;
+
+  font-family: "IBM Plex Mono", monospace;
+  font-size: 7px;
+  letter-spacing: 1px;
+
+  color: #a89468;
+
+  cursor: pointer;
+}
+
+/* Meta */
+.ticket-meta {
+  position: relative;
+  z-index: 3;
+
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+
+  margin-top: 14px;
+}
+
+.ticket-meta div {
+  display: flex;
+  gap: 7px;
+
+  font-size: 11px;
+}
+
+.ticket-meta span {
+  font-family: "IBM Plex Mono", monospace;
+  font-size: 8px;
+  letter-spacing: .8px;
+  color: #a89468;
+}
+
+.ticket-meta strong {
+  font-weight: 400;
+  color: rgba(16,20,25,.75);
+}
+
+/* Proposition */
+.ticket-author {
+  position: relative;
+  z-index: 3;
+
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 12px;
+
+  margin-top: 16px;
+  padding-top: 11px;
+
+  border-top: 1px dashed rgba(16,20,25,.14);
+
+  font-family: "IBM Plex Mono", monospace;
+  font-size: 8px;
+
+  color: rgba(16,20,25,.58);
+}
+
+.ticket-author button {
+  font-family: "IBM Plex Mono", monospace;
+  font-size: 8px;
+  color: rgba(78,85,93,.75);
+  cursor: pointer;
+}
+
+.ticket-delete-confirm {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.ticket-delete-confirm span {
+  color: #a71930;
+}
+
+/* =========================================================
+   PERFORATION
+   ========================================================= */
+
+.ticket-perforation {
+  position: relative;
+  z-index: 5;
+
+  width: 1px;
+  flex: 0 0 1px;
+
+  margin: 22px 0;
+
+  background:
+    repeating-linear-gradient(
+      to bottom,
+      rgba(16,20,25,.34) 0 4px,
+      transparent 4px 9px
+    );
+}
+
+.ticket-perforation > span {
+  position: absolute;
+
+  left: 50%;
+
+  width: 17px;
+  height: 17px;
+
+  margin-left: -8px;
+
+  border-radius: 50%;
+
+  background: #f3f1ea;
+
+  box-shadow:
+    0 0 0 1px rgba(16,20,25,.12);
+}
+
+.ticket-perforation > span:first-child {
+  top: -9px;
+}
+
+.ticket-perforation > span:last-child {
+  bottom: -9px;
+}
+
+/* =========================================================
+   COUPON
+   ========================================================= */
+
+.ticket-choice {
+  position: relative;
+  z-index: 3;
+
+  width: 205px;
+  flex: 0 0 205px;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  padding: 29px 22px 22px;
+
+  overflow: hidden;
+
+  background:
+    linear-gradient(
+      145deg,
+      rgba(255,255,255,.28),
+      transparent 45%
+    ),
+    #e8e6df !important;
+}
+
+.ticket-choice-watermark {
+  position: absolute;
+  right: -18px;
+  bottom: -28px;
+
+  font-family: Georgia, serif;
+  font-size: 115px;
+  font-weight: 700;
+
+  color: rgba(16,20,25,.035);
+
+  transform: rotate(-12deg);
+}
+
+.ticket-choice-label {
+  position: relative;
+  z-index: 2;
+
+  font-family: "IBM Plex Mono", monospace;
+  font-size: 7px;
+  letter-spacing: 3px;
+
+  color: rgba(78,85,93,.65);
+}
+
+.ticket-price {
+  position: relative;
+  z-index: 2;
+
+  margin-top: 20px;
+
+  text-align: center;
+}
+
+.ticket-price strong {
+  display: block;
+
+  font-family: "Fraunces", Georgia, serif;
+  font-size: 25px;
+  font-weight: 600;
+
+  color: #101419;
+}
+
+.ticket-price span {
+  display: block;
+
+  margin-top: 2px;
+
+  font-family: "IBM Plex Mono", monospace;
+  font-size: 6px;
+  letter-spacing: 1.5px;
+
+  color: rgba(78,85,93,.65);
+}
+
+.ticket-votes {
+  position: relative;
+  z-index: 2;
+
+  display: flex;
+  gap: 7px;
+
+  margin-top: 17px;
+}
+
+.ticket-card .vote-button {
+  width: 65px !important;
+  height: 34px !important;
+
+  border: 1px solid rgba(16,20,25,.20) !important;
+  border-radius: 2px !important;
+
+  background: rgba(243,241,234,.75) !important;
+
+  font-family: "IBM Plex Mono", monospace;
+  font-size: 9px !important;
+  letter-spacing: .8px;
+
+  color: #101419 !important;
+
+  box-shadow: none !important;
+}
+
+.ticket-card .vote-button.active.vote-oui {
+  background: #a71930 !important;
+  border-color: #a71930 !important;
+  color: #f3f1ea !important;
+}
+
+.ticket-card .vote-button.active.vote-non {
+  background: #4e555d !important;
+  border-color: #4e555d !important;
+  color: #f3f1ea !important;
+}
+
+.ticket-voters {
+  position: relative;
+  z-index: 2;
+
+  width: 100%;
+
+  margin-top: 18px;
+
+  text-align: center;
+
+  font-family: "IBM Plex Mono", monospace;
+  font-size: 7px;
+  line-height: 1.6;
+
+  color: rgba(78,85,93,.65);
+}
+
+.ticket-voters div {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 5px;
+}
+
+.ticket-voters b {
+  font-size: 7px;
+  letter-spacing: 1px;
+  font-weight: 500;
+  color: #101419;
+}
+
+.ticket-voters span {
+  overflow-wrap: anywhere;
+}
+
+.ticket-coupon-code {
+  position: absolute;
+  bottom: 13px;
+
+  font-family: "IBM Plex Mono", monospace;
+  font-size: 6px;
+  letter-spacing: 2px;
+
+  color: rgba(16,20,25,.28);
+}
+
+/* =========================================================
+   MOBILE
+   ========================================================= */
+
+@media (max-width: 760px) {
+
+  .ticket-card {
+    display: flex !important;
+    flex-direction: column !important;
+    min-height: 0 !important;
+  }
+
+  .ticket-main {
+    padding: 24px 21px 22px !important;
+  }
+
+  .ticket-engraving {
+    right: -100px;
+    bottom: -100px;
+    transform: scale(.85);
+  }
+
+  .ticket-stamp {
+    right: 20px;
+    top: 108px;
+
+    width: 70px;
+    height: 70px;
+  }
+
+  .ticket-stamp span {
+    font-size: 5px;
+  }
+
+  .ticket-stamp strong {
+    font-size: 14px;
+  }
+
+  .ticket-route-label {
+    grid-template-columns: 1fr 1.7fr 1fr;
+    gap: 7px;
+    font-size: 8px;
+    letter-spacing: 2px;
+  }
+
+  .ticket-route-center {
+    gap: 4px;
+  }
+
+  .ticket-perforation {
+    width: auto;
+    height: 1px;
+    flex: none;
+
+    margin: 0 18px;
+
+    background:
+      repeating-linear-gradient(
+        90deg,
+        rgba(16,20,25,.34) 0 4px,
+        transparent 4px 9px
+      );
+  }
+
+  .ticket-perforation > span {
+    display: none;
+  }
+
+  .ticket-choice {
+    width: 100%;
+    flex: none;
+
+    padding: 25px 20px 28px;
+  }
+
+  .ticket-choice-label {
+    font-size: 6px;
+  }
+
+  .ticket-voters {
+    max-width: 300px;
+  }
+
+  .ticket-coupon-code {
+    position: static;
+    margin-top: 15px;
+  }
+}
